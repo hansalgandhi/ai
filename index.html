@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hansal Gandhi — AI Seminars & Workshops Portfolio (Mumbai Colleges)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF0E8;
+      --paper: #FFFBF7;
+      --sand: #EBDBCE;
+      --blush: #F3D7D4;
+      --terracotta: #C56869;
+      --espresso: #702C2B;
+      --olive: #3E350E;
+      --umber: #794515;
+      --ochre: #DAAD29;
+      --ocean: #0C6478;
+      --ink: #241716;
+      --muted: #5C4947;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #EAE0D5;
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.55;
+      padding: 32px 16px;
+      -webkit-font-smoothing: antialiased;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    input, select, textarea {
+      user-select: text;
+      -webkit-user-select: text;
+    }
+
+    .sheet {
+      max-width: 1040px;
+      margin: 0 auto;
+      background-color: var(--cream);
+      border: 2px solid #1A1211;
+      box-shadow: 0 14px 36px rgba(36, 23, 22, 0.10);
+      padding: 44px 48px;
+    }
+
+    /* Header Grid */
+    header {
+      display: grid;
+      grid-template-columns: 1.35fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+      border-bottom: 2px solid var(--espresso);
+      padding-bottom: 26px;
+      margin-bottom: 30px;
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--umber);
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 50px;
+      font-weight: 400;
+      line-height: 1.02;
+      color: var(--espresso);
+      letter-spacing: -0.01em;
+    }
+
+    .tagline {
+      margin-top: 10px;
+      font-size: 14.5px;
+      color: var(--olive);
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .contact-card {
+      background-color: var(--paper);
+      border: 1.5px solid var(--espresso);
+      padding: 16px 18px;
+      font-size: 13px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 7px;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 122px 1fr;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .contact-label {
+      font-weight: 700;
+      color: var(--espresso);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .contact-val {
+      color: var(--ink);
+      word-break: break-word;
+    }
+
+    .contact-val a {
+      color: var(--ocean);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(12, 100, 120, 0.35);
+    }
+
+    .contact-val a:hover {
+      color: var(--espresso);
+      border-bottom-color: var(--espresso);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 34px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      margin-bottom: 14px;
+      border-bottom: 1.5px solid var(--sand);
+      padding-bottom: 7px;
+    }
+
+    h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 29px;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--espresso);
+    }
+
+    .section-note {
+      font-size: 12.5px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* Bio */
+    .bio {
+      background-color: var(--paper);
+      border: 1px solid var(--sand);
+      border-left: 4px solid var(--terracotta);
+      padding: 18px 22px;
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+
+    /* Filter Buttons */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .filter-btn {
+      background-color: var(--paper);
+      border: 1.5px solid var(--espresso);
+      color: var(--espresso);
+      padding: 7px 14px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .filter-btn:hover {
+      background-color: var(--blush);
+    }
+
+    .filter-btn.active {
+      background-color: var(--espresso);
+      color: var(--cream);
+    }
+
+    /* Tracks Table */
+    .table-wrap {
+      width: 100%;
+      border: 1.5px solid var(--espresso);
+      background-color: var(--paper);
+      overflow: hidden;
+    }
+
+    .tracks-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 13.5px;
+    }
+
+    .tracks-table th {
+      background-color: var(--espresso);
+      color: var(--cream);
+      text-align: left;
+      padding: 12px 15px;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-right: 1px solid rgba(250, 240, 232, 0.22);
+    }
+
+    .tracks-table th:last-child {
+      border-right: none;
+    }
+
+    .tracks-table td {
+      padding: 14px 15px;
+      vertical-align: top;
+      border-top: 1px solid var(--sand);
+      border-right: 1px solid var(--sand);
+      line-height: 1.5;
+    }
+
+    .tracks-table td:last-child {
+      border-right: none;
+    }
+
+    .tracks-table tbody tr:first-child td {
+      border-top: none;
+    }
+
+    .tracks-table tr.track-row {
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+
+    .tracks-table tr.track-row:hover {
+      background-color: #FAF1EE;
+    }
+
+    .tracks-table tr.track-row.selected {
+      background-color: var(--blush);
+    }
+
+    .track-title {
+      font-weight: 700;
+      color: var(--espresso);
+      font-size: 14px;
+      line-height: 1.35;
+      margin-bottom: 7px;
+      display: block;
+    }
+
+    .badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      padding: 2px 8px;
+      background-color: var(--cream);
+      color: var(--olive);
+      border: 1px solid rgba(62, 53, 14, 0.35);
+    }
+
+    .audience-age {
+      font-weight: 700;
+      color: var(--olive);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .audience-stream {
+      font-size: 12.5px;
+      color: var(--muted);
+      display: block;
+    }
+
+    .format-type {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+
+    .format-duration {
+      font-weight: 700;
+      color: var(--umber);
+      font-size: 13px;
+    }
+
+    /* Syllabus Drawer */
+    .syllabus-drawer {
+      margin-top: 14px;
+      background-color: var(--paper);
+      border: 1.5px solid var(--umber);
+      padding: 18px 20px;
+      display: none;
+    }
+
+    .syllabus-drawer.open {
+      display: block;
+    }
+
+    .drawer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .drawer-title {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 24px;
+      color: var(--umber);
+      line-height: 1.2;
+    }
+
+    .close-btn {
+      background-color: var(--cream);
+      border: 1px solid var(--umber);
+      color: var(--umber);
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .close-btn:hover {
+      background-color: var(--umber);
+      color: var(--cream);
+    }
+
+    .syllabus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      font-size: 13px;
+    }
+
+    .syllabus-box {
+      background-color: var(--cream);
+      border: 1px solid var(--sand);
+      padding: 13px 15px;
+      line-height: 1.5;
+    }
+
+    .syllabus-box strong {
+      display: block;
+      color: var(--espresso);
+      margin-bottom: 5px;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Live Demos Grid */
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .demo-card {
+      background-color: var(--paper);
+      border: 1.5px solid var(--olive);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .demo-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: var(--ocean);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+    }
+
+    .demo-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--olive);
+      margin-bottom: 8px;
+    }
+
+    .demo-card p {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--ink);
+    }
+
+    .demo-stack {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      line-height: 1.45;
+      background-color: var(--sand);
+      padding: 8px 10px;
+      color: var(--espresso);
+      border: 1px solid rgba(112, 44, 43, 0.25);
+    }
+
+    /* Institutional Alignment */
+    .tab-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .tab-btn {
+      background-color: var(--paper);
+      border: 1.5px solid var(--ocean);
+      color: var(--ocean);
+      padding: 9px 14px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .tab-btn:hover {
+      background-color: #E6F2F4;
+    }
+
+    .tab-btn.active {
+      background-color: var(--ocean);
+      color: #FFFFFF;
+    }
+
+    .tab-panel {
+      background-color: var(--paper);
+      border: 1.5px solid var(--ocean);
+      padding: 18px 22px;
+      font-size: 14px;
+    }
+
+    .tab-panel h4 {
+      color: var(--ocean);
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .tab-panel p {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+
+    .tab-panel ul {
+      padding-left: 20px;
+    }
+
+    .tab-panel li {
+      margin-bottom: 5px;
+      line-height: 1.5;
+    }
+
+    .tab-panel li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Quick Inquiry Builder */
+    .inquiry-box {
+      background-color: var(--sand);
+      border: 1.5px solid var(--espresso);
+      padding: 22px 24px;
+      margin-bottom: 0;
+    }
+
+    .inquiry-box .section-header {
+      border-bottom-color: rgba(112, 44, 43, 0.25);
+      margin-bottom: 10px;
+    }
+
+    .logistics-note {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .inquiry-controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .inquiry-controls label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--espresso);
+      margin-bottom: 5px;
+    }
+
+    .inquiry-controls select,
+    .inquiry-controls input {
+      width: 100%;
+      height: 38px;
+      padding: 0 11px;
+      border: 1.5px solid var(--espresso);
+      background-color: var(--paper);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .inquiry-controls select:focus,
+    .inquiry-controls input:focus {
+      border-color: var(--ocean);
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      height: 38px;
+      padding: 0 18px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--espresso);
+    }
+
+    .primary-btn {
+      background-color: var(--espresso);
+      color: var(--cream);
+    }
+
+    .primary-btn:hover {
+      background-color: var(--umber);
+      border-color: var(--umber);
+    }
+
+    .secondary-btn {
+      background-color: var(--paper);
+      color: var(--espresso);
+    }
+
+    .secondary-btn:hover {
+      background-color: var(--blush);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1.5px solid var(--espresso);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    /* Print Styling (2-Page Clean Layout) */
+    @media print {
+      body {
+        background: #FFFFFF;
+        padding: 0;
+      }
+      .sheet {
+        box-shadow: none;
+        border: 2px solid #000000;
+        padding: 24px 28px;
+        max-width: 100%;
+      }
+      .filter-bar,
+      .inquiry-box,
+      .no-print {
+        display: none !important;
+      }
+      section {
+        margin-bottom: 22px;
+      }
+      .demo-card,
+      .table-wrap,
+      .tab-panel {
+        break-inside: avoid;
+      }
+    }
+
+    /* Responsive Mobile Layout */
+    @media (max-width: 860px) {
+      header {
+        grid-template-columns: 1fr;
+      }
+      .demo-grid,
+      .syllabus-grid,
+      .tab-buttons,
+      .inquiry-controls {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .sheet {
+        padding: 24px 18px;
+      }
+      h1 {
+        font-size: 38px;
+      }
+      .contact-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+      .tracks-table,
+      .tracks-table thead,
+      .tracks-table tbody,
+      .tracks-table th,
+      .tracks-table td,
+      .tracks-table tr {
+        display: block;
+        width: 100%;
+      }
+      .tracks-table thead {
+        display: none;
+      }
+      .tracks-table tr.track-row {
+        border-bottom: 1.5px solid var(--espresso);
+        padding: 12px 14px;
+      }
+      .tracks-table tr.track-row:last-child {
+        border-bottom: none;
+      }
+      .tracks-table td {
+        border: none;
+        padding: 4px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <!-- Header -->
+    <header>
+      <div>
+        <div class="eyebrow">AI Educator &bull; Autonomous Agent Architect &bull; Engineering Faculty</div>
+        <h1>Hansal Gandhi</h1>
+        <p class="tagline">From Curiosity to Working Prototypes &mdash; Practical AI Literacy, Prompt Engineering, and Applied Tool-Building for Ages 15&ndash;25</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-row">
+          <span class="contact-label">Region</span>
+          <span class="contact-val">Mumbai, Navi Mumbai, Thane &amp; Palghar</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Phone / WA</span>
+          <span class="contact-val"><a href="tel:+919699078983">+91 96990 78983</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Email</span>
+          <span class="contact-val"><a href="mailto:hansalgandhi@gmail.com">hansalgandhi@gmail.com</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-val"><a href="https://www.linkedin.com/in/hansalgandhi" target="_blank" rel="noopener">linkedin.com/in/hansalgandhi</a></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Speaker Profile -->
+    <section>
+      <div class="section-header">
+        <h2>About the Speaker</h2>
+        <span class="section-note">Academic &amp; Applied Engineering Background</span>
+      </div>
+      <div class="bio">
+        Hansal Gandhi is a Mumbai-based engineering educator and former Assistant Professor of Computer Engineering at Fr. Conceicao Rodrigues College of Engineering, Bandra, with prior engineering experience in the United States. Specializing in autonomous multi-agent AI systems, applied LLM workflows, and rapid software prototyping, Hansal bridges the gap between textbook theory and real-world engineering&mdash;guiding students aged 15&ndash;25 from passive AI usage to building working, responsible AI applications.
+      </div>
+    </section>
+
+    <!-- Interactive Seminars & Workshops -->
+    <section>
+      <div class="section-header">
+        <h2>Signature Seminars &amp; Hands-On Workshops (Ages 15&ndash;25)</h2>
+        <span class="section-note no-print">Filter by level or click any row to view syllabus</span>
+      </div>
+
+      <div class="filter-bar no-print">
+        <button type="button" class="filter-btn active" data-filter="all">All Programs (15&ndash;25 yrs)</button>
+        <button type="button" class="filter-btn" data-filter="junior">Junior College (15&ndash;18 yrs)</button>
+        <button type="button" class="filter-btn" data-filter="degree">Degree / Commerce / Mgmt (17&ndash;22 yrs)</button>
+        <button type="button" class="filter-btn" data-filter="engineering">Engineering &amp; Tech Chapters (18&ndash;25 yrs)</button>
+      </div>
+
+      <div class="table-wrap">
+        <table class="tracks-table">
+          <colgroup>
+            <col style="width: 26%;">
+            <col style="width: 22%;">
+            <col style="width: 18%;">
+            <col style="width: 34%;">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Program Title</th>
+              <th>Target Audience</th>
+              <th>Format &amp; Duration</th>
+              <th>Core Curriculum &amp; Student Outcomes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="track-row" data-category="junior" data-track="0">
+              <td>
+                <span class="track-title">AI in Everyday Life &amp; How Machines Learn</span>
+                <span class="badge">Track 01 &bull; Foundation</span>
+              </td>
+              <td>
+                <span class="audience-age">15&ndash;18 yrs</span>
+                <span class="audience-stream">FYJC / SYJC (Science, Commerce, Arts, HSC IT)</span>
+              </td>
+              <td>
+                <span class="format-type">Interactive Seminar + Live Demo</span>
+                <span class="format-duration">60&ndash;90 Mins</span>
+              </td>
+              <td>Demystifies machine learning, computer vision, and LLMs without heavy math; covers AI career pathways, data privacy, and academic integrity aligned with Class 11&ndash;12 AI &amp; HSC IT foundations.</td>
+            </tr>
+            <tr class="track-row" data-category="degree" data-track="1">
+              <td>
+                <span class="track-title">Prompt Engineering &amp; Responsible AI Productivity</span>
+                <span class="badge">Track 02 &bull; Applied Lab</span>
+              </td>
+              <td>
+                <span class="audience-age">17&ndash;22 yrs</span>
+                <span class="audience-stream">FY/SY/TY B.Sc., B.Com., BAF, BMS, B.Ed.</span>
+              </td>
+              <td>
+                <span class="format-type">Hands-On Lab Workshop</span>
+                <span class="format-duration">2&ndash;3 Hours</span>
+              </td>
+              <td>Teaches structured prompting (Zero-Shot, Few-Shot, Chain-of-Thought, Prompt Chaining), output verification, hallucination detection, and ethical workplace AI adoption.</td>
+            </tr>
+            <tr class="track-row" data-category="engineering" data-track="2">
+              <td>
+                <span class="track-title">Building Real-World AI Apps with Python &amp; RAG</span>
+                <span class="badge">Track 03 &bull; Bootcamp</span>
+              </td>
+              <td>
+                <span class="audience-age">18&ndash;25 yrs</span>
+                <span class="audience-stream">B.Sc. CS/IT/AI, B.E./B.Tech., MCA</span>
+              </td>
+              <td>
+                <span class="format-type">Intensive Bootcamp</span>
+                <span class="format-duration">1&ndash;2 Days</span>
+              </td>
+              <td>Guides students step-by-step through Python LLM pipelines, Retrieval-Augmented Generation (RAG), and vector search so teams build and deploy a working Q&amp;A prototype.</td>
+            </tr>
+            <tr class="track-row" data-category="engineering" data-track="3">
+              <td>
+                <span class="track-title">Agentic AI, Tool Calling &amp; Guardrails</span>
+                <span class="badge">Track 04 &bull; Capstone</span>
+              </td>
+              <td>
+                <span class="audience-age">20&ndash;25 yrs</span>
+                <span class="audience-stream">TE/BE Engineering, PG, Tech Chapters</span>
+              </td>
+              <td>
+                <span class="format-type">Capstone Workshop</span>
+                <span class="format-duration">2 Days</span>
+              </td>
+              <td>Covers reasoning loops, Model Context Protocol (MCP), multi-agent orchestration, tool calling, evaluation metrics, and prompt-injection defense.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="syllabus-drawer" class="syllabus-drawer no-print">
+        <div class="drawer-top">
+          <div class="drawer-title" id="drawer-title">Module Outline</div>
+          <button type="button" class="close-btn" id="close-drawer">Close &times;</button>
+        </div>
+        <div class="syllabus-grid" id="drawer-body"></div>
+      </div>
+    </section>
+
+    <!-- Live Demo Showcase -->
+    <section>
+      <div class="section-header">
+        <h2>Live Demo Showcase: Built &amp; Deployed AI Systems</h2>
+        <span class="section-note">Demonstrated live during campus sessions</span>
+      </div>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <div>
+            <div class="demo-tag">SYSTEM 01 &bull; DISTRIBUTED AGENTS</div>
+            <h3>Multi-Node Autonomous Agent Orchestrator</h3>
+            <p>Demonstrates live task decomposition, autonomous tool execution, and multi-agent coordination across local Linux machines and cloud nodes in real time.</p>
+          </div>
+          <div class="demo-stack">Stack: Lead Orchestrator + Sub-Agent Harnesses, Linux &amp; Cloud Nodes</div>
+        </div>
+        <div class="demo-card">
+          <div>
+            <div class="demo-tag">SYSTEM 02 &bull; FULL-STACK AUTOMATION</div>
+            <h3>Operational Web &amp; Workflow Suite</h3>
+            <p>Production web platforms&mdash;including attendance trackers, project management boards, and automated BOQ/catalog builders&mdash;showing how AI accelerates real software delivery.</p>
+          </div>
+          <div class="demo-stack">Stack: Full-Stack Web Apps, Structured Data Pipelines &amp; Automation</div>
+        </div>
+        <div class="demo-card">
+          <div>
+            <div class="demo-tag">SYSTEM 03 &bull; CYBER-PHYSICAL SYSTEMS</div>
+            <h3>Edge-AI &amp; IoT Hardware Prototyping</h3>
+            <p>Illustrates how software intelligence connects to physical sensors, cellular telemetry, and real-world power/enclosure constraints for engineering cohorts.</p>
+          </div>
+          <div class="demo-stack">Stack: ESP32-C3, Cellular Modem, Motion Sensors, 3D-Printed Enclosures</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEP 2020 & IQAC Alignment -->
+    <section>
+      <div class="section-header">
+        <h2>NEP 2020, IQAC &amp; Departmental Alignment (Mumbai Colleges)</h2>
+        <span class="section-note no-print">Select stakeholder role to view deliverables</span>
+      </div>
+
+      <div class="tab-buttons no-print">
+        <button type="button" class="tab-btn active" data-tab="iqac">Principal &amp; IQAC Coordinator</button>
+        <button type="button" class="tab-btn" data-tab="tnp">Training &amp; Placement (T&amp;P) Cell</button>
+        <button type="button" class="tab-btn" data-tab="dept">CS/IT/AI Depts &amp; Student Chapters</button>
+      </div>
+
+      <div class="tab-panel" id="stakeholder-panel"></div>
+    </section>
+
+    <!-- Logistics & Quick Booking -->
+    <section class="inquiry-box no-print">
+      <div class="section-header">
+        <h2>Schedule a Campus Session or Workshop</h2>
+        <span class="section-note">On-Campus (Mumbai / Navi Mumbai / Thane / Palghar) or Live Online</span>
+      </div>
+      <p class="logistics-note">
+        <strong>Infrastructure:</strong> Projector &amp; internet for seminars; student laptops or lab PCs (browser/Python access) for hands-on workshops. Co-branded participation e-certificates and starter repositories included.
+      </p>
+      <div class="inquiry-controls">
+        <div>
+          <label for="college-input">College / Department Name</label>
+          <input type="text" id="college-input" placeholder="e.g., St. Xavier's / DJ Sanghvi / TCSC" />
+        </div>
+        <div>
+          <label for="track-select">Preferred Program Track</label>
+          <select id="track-select">
+            <option value="Track 01: AI in Everyday Life & How Machines Learn (60-90 Mins)">Track 01: Junior College Seminar (60&ndash;90 Mins)</option>
+            <option value="Track 02: Prompt Engineering & Responsible AI Productivity (2-3 Hours)">Track 02: Degree College Lab (2&ndash;3 Hours)</option>
+            <option value="Track 03: Building Real-World AI Apps with Python & RAG (1-2 Days)">Track 03: Python &amp; RAG Bootcamp (1&ndash;2 Days)</option>
+            <option value="Track 04: Agentic AI, Tool Calling & Guardrails (2 Days)">Track 04: Agentic AI Capstone (2 Days)</option>
+          </select>
+        </div>
+        <div>
+          <label for="mode-select">Delivery Format</label>
+          <select id="mode-select">
+            <option value="On-Campus (Mumbai Metropolitan Region)">On-Campus (Mumbai / Thane / Navi Mumbai)</option>
+            <option value="Live Interactive Online">Live Interactive Online</option>
+          </select>
+        </div>
+      </div>
+      <div class="action-row">
+        <a id="whatsapp-link" class="primary-btn" href="https://wa.me/919699078983" target="_blank" rel="noopener">Inquire via WhatsApp (+91 96990 78983)</a>
+        <a id="email-link" class="secondary-btn" href="mailto:hansalgandhi@gmail.com">Send Email Inquiry</a>
+        <button type="button" class="secondary-btn" onclick="window.print()">Print / Save 2-Page PDF</button>
+      </div>
+    </section>
+
+    <footer>
+      <div><strong>Hansal Gandhi</strong> &bull; AI Seminars &amp; Workshops Portfolio (Ages 15&ndash;25)</div>
+      <div>+91 96990 78983 &bull; hansalgandhi@gmail.com &bull; linkedin.com/in/hansalgandhi</div>
+    </footer>
+  </div>
+
+  <script>
+    const trackDetails = [
+      {
+        title: "Track 01: AI in Everyday Life & How Machines Learn (60–90 Mins)",
+        audience: "FYJC & SYJC Students (Science, Commerce, Arts, HSC IT) — Ages 15–18",
+        agenda: "1. How AI actually learns (patterns vs. rules) • 2. Live visual & language model demos • 3. Spotting deepfakes, bias & hallucinations • 4. Future careers & HSC IT / Class 11–12 project ideas",
+        takeaway: "Students gain clear conceptual intuition without intimidating calculus, plus practical guidelines for ethical, effective study use."
+      },
+      {
+        title: "Track 02: Prompt Engineering & Responsible AI Productivity (2–3 Hours)",
+        audience: "Undergraduate Degree Students (B.Sc., B.Com., BAF, BMS, B.Ed.) — Ages 17–22",
+        agenda: "1. Anatomy of structured prompts (Role, Context, Constraints, Examples) • 2. Chain-of-Thought & Prompt Chaining • 3. Fact-checking & citation verification workflows • 4. Resume, research & data analysis labs",
+        takeaway: "Every participant builds a reusable personal prompt toolkit tailored to their academic stream and internship workflows."
+      },
+      {
+        title: "Track 03: Building Real-World AI Apps with Python & RAG (1–2 Days)",
+        audience: "CS, IT, AI/DS & Engineering Undergraduates / MCA — Ages 18–25",
+        agenda: "1. LLM APIs, tokens & structured JSON outputs • 2. Document chunking, embeddings & vector retrieval • 3. Building a syllabus-grounded RAG assistant in Python • 4. Grounding checks & live deployment",
+        takeaway: "Student teams leave with a working, GitHub-ready RAG application that answers questions strictly from custom documents."
+      },
+      {
+        title: "Track 04: Agentic AI, Tool Calling & Guardrails (2 Days)",
+        audience: "TE/BE Engineering, Postgraduate Cohorts & Tech Chapters (CSI, ACM, GDG, IEEE) — Ages 20–25",
+        agenda: "1. ReAct reasoning loops & deterministic tool calling • 2. Model Context Protocol (MCP) & multi-agent handoffs • 3. Latency, cost & hallucination evaluation • 4. Prompt-injection defense & sandboxing",
+        takeaway: "Engineers architect an end-to-end multi-step agent capable of querying external tools safely with measurable guardrails."
+      }
+    ];
+
+    const stakeholderContent = {
+      iqac: {
+        heading: "Principal & IQAC Coordinator — NEP 2020 & NAAC AQAR Readiness",
+        focus: "Aligned with NEP 2020 Skill Enhancement Courses (SEC), Vocational Skill Courses (VSC), and Value Added Courses (VAC).",
+        bullets: [
+          "Complete module syllabus with defined Course Outcomes (COs) mapped to Bloom's Taxonomy.",
+          "Structured attendance logs, pre/post-session assessment metrics, and student feedback summaries for NAAC AQAR files.",
+          "Flexible scheduling as a 2-hour seminar, 15-hour credit workshop, or 30-hour Value Added Course."
+        ]
+      },
+      tnp: {
+        heading: "Training & Placement (T&P) Cell — Industry & Interview Readiness",
+        focus: "Bridging the gap between academic coursework and employer expectations for applied AI fluency.",
+        bullets: [
+          "Hands-on capstone builds that students can publish on GitHub and defend during technical interviews.",
+          "Practical workflow automation skills applicable across software engineering, finance, analytics, and management roles.",
+          "Guidance on presenting AI projects responsibly without over-claiming black-box API wrappers."
+        ]
+      },
+      dept: {
+        heading: "CS/IT/AI Departments & Student Technical Chapters (CSI, ACM, GDG, IEEE)",
+        focus: "High-energy live coding walkthroughs, architecture deep-dives, and hackathon preparation.",
+        bullets: [
+          "Live demonstrations of multi-node agent orchestration, RAG pipelines, and ESP32-C3 edge-AI hardware.",
+          "Starter code repositories and sandbox templates so students spend time building rather than debugging setup issues.",
+          "Ideal for annual tech fests, departmental symposiums, and weekend developer bootcamps."
+        ]
+      }
+    };
+
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const trackRows = document.querySelectorAll('.track-row');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        trackRows.forEach(row => {
+          row.style.display = (filter === 'all' || row.dataset.category === filter) ? '' : 'none';
+        });
+      });
+    });
+
+    const drawer = document.getElementById('syllabus-drawer');
+    const drawerTitle = document.getElementById('drawer-title');
+    const drawerBody = document.getElementById('drawer-body');
+    trackRows.forEach(row => {
+      row.addEventListener('click', () => {
+        trackRows.forEach(r => r.classList.remove('selected'));
+        row.classList.add('selected');
+        const item = trackDetails[Number(row.dataset.track)];
+        drawerTitle.textContent = item.title;
+        drawerBody.innerHTML = `
+          <div class="syllabus-box"><strong>Target Cohort</strong>${item.audience}</div>
+          <div class="syllabus-box"><strong>Session Flow</strong>${item.agenda}</div>
+          <div class="syllabus-box"><strong>Student Outcome</strong>${item.takeaway}</div>
+        `;
+        drawer.classList.add('open');
+      });
+    });
+
+    document.getElementById('close-drawer').addEventListener('click', () => {
+      drawer.classList.remove('open');
+      trackRows.forEach(r => r.classList.remove('selected'));
+    });
+
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const panel = document.getElementById('stakeholder-panel');
+    function renderTab(key) {
+      const data = stakeholderContent[key];
+      panel.innerHTML = `
+        <h4>${data.heading}</h4>
+        <p>${data.focus}</p>
+        <ul>${data.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
+      `;
+    }
+    renderTab('iqac');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderTab(btn.dataset.tab);
+      });
+    });
+
+    const collegeInput = document.getElementById('college-input');
+    const trackSelect = document.getElementById('track-select');
+    const modeSelect = document.getElementById('mode-select');
+    const waLink = document.getElementById('whatsapp-link');
+    const emailLink = document.getElementById('email-link');
+
+    function updateLinks() {
+      const college = collegeInput.value.trim() || "our college";
+      const track = trackSelect.value;
+      const mode = modeSelect.value;
+      const msg = `Hello Prof. Hansal Gandhi, I am reaching out from ${college} regarding conducting "${track}" (${mode}) for our students. Please share your availability.`;
+      waLink.href = `https://wa.me/919699078983?text=${encodeURIComponent(msg)}`;
+      emailLink.href = `mailto:hansalgandhi@gmail.com?subject=${encodeURIComponent("AI Workshop Inquiry - " + college)}&body=${encodeURIComponent(msg)}`;
+    }
+    [collegeInput, trackSelect, modeSelect].forEach(el => el.addEventListener('input', updateLinks));
+    updateLinks();
+  </script>
+</body>
+</html>
