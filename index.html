@@ -3,1050 +3,1242 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hansal Gandhi — AI Seminars & Workshops Portfolio (Mumbai Colleges)</title>
+  <title>Hansal Gandhi — Hands-On AI Seminars & Workshops for Mumbai Colleges</title>
+  <meta name="description" content="Hands-on AI seminars, labs and bootcamps for ages 15–25 across Mumbai, Navi Mumbai, Thane & Palghar. Prompt engineering, Python & RAG, agentic AI. NEP 2020 & NAAC AQAR ready. Call +91 96990 78983." />
+  <meta name="theme-color" content="#07090B" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hansal Gandhi — Hands-On AI Workshops for Colleges" />
+  <meta property="og:description" content="From curiosity to working prototypes. AI seminars, labs & bootcamps for ages 15–25 · Mumbai MMR · NEP 2020 / NAAC AQAR ready. Book: +91 96990 78983" />
+  <meta property="og:url" content="https://hansalgandhi.github.io/ai/" />
+  <meta property="og:image" content="https://hansalgandhi.github.io/ai/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307090B'/%3E%3Ccircle cx='32' cy='32' r='9' fill='%23FF5A36'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%235EEAD4' stroke-width='3' stroke-dasharray='8 6'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --cream: #FAF0E8;
-      --paper: #FFFBF7;
-      --sand: #EBDBCE;
-      --blush: #F3D7D4;
-      --terracotta: #C56869;
-      --espresso: #702C2B;
-      --olive: #3E350E;
-      --umber: #794515;
-      --ochre: #DAAD29;
-      --ocean: #0C6478;
-      --ink: #241716;
-      --muted: #5C4947;
+      --bg: #07090B;
+      --bg-2: #0C1013;
+      --panel: rgba(16, 21, 25, 0.78);
+      --panel-solid: #11161A;
+      --line: rgba(236, 234, 228, 0.08);
+      --line-2: rgba(236, 234, 228, 0.16);
+      --ink: #ECEAE4;
+      --muted: #A0A8AF;
+      --dim: #626B73;
+      --verm: #FF5A36;
+      --verm-soft: rgba(255, 90, 54, 0.13);
+      --cyan: #5EEAD4;
+      --cyan-soft: rgba(94, 234, 212, 0.12);
+      --amber: #F5B544;
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    @property --angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
     }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html {
       scroll-behavior: smooth;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
     }
 
     body {
-      background-color: #EAE0D5;
-      color: var(--ink);
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.55;
-      padding: 32px 16px;
-      -webkit-font-smoothing: antialiased;
-      user-select: none;
-      -webkit-user-select: none;
+      background:
+        radial-gradient(1200px 600px at 85% -10%, rgba(255, 90, 54, 0.10), transparent 60%),
+        radial-gradient(900px 500px at -10% 30%, rgba(94, 234, 212, 0.06), transparent 60%),
+        var(--bg);
+      overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    input, select, textarea {
-      user-select: text;
-      -webkit-user-select: text;
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(236, 234, 228, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(236, 234, 228, 0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse at 50% 0%, #000 30%, transparent 85%);
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .sheet {
-      max-width: 1040px;
-      margin: 0 auto;
-      background-color: var(--cream);
-      border: 2px solid #1A1211;
-      box-shadow: 0 14px 36px rgba(36, 23, 22, 0.10);
-      padding: 44px 48px;
-    }
+    a { color: inherit; }
+    ::selection { background: var(--verm); color: #fff; }
+    :focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 4px; }
 
-    /* Header Grid */
-    header {
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+    /* ---------- Boot overlay ---------- */
+    #boot {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: var(--bg);
       display: grid;
-      grid-template-columns: 1.35fr 0.95fr;
-      gap: 28px;
-      align-items: center;
-      border-bottom: 2px solid var(--espresso);
-      padding-bottom: 26px;
-      margin-bottom: 30px;
-    }
-
-    .eyebrow {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: var(--umber);
-      margin-bottom: 8px;
-    }
-
-    h1 {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: 50px;
-      font-weight: 400;
-      line-height: 1.02;
-      color: var(--espresso);
-      letter-spacing: -0.01em;
-    }
-
-    .tagline {
-      margin-top: 10px;
-      font-size: 14.5px;
-      color: var(--olive);
-      font-weight: 500;
-      line-height: 1.45;
-    }
-
-    .contact-card {
-      background-color: var(--paper);
-      border: 1.5px solid var(--espresso);
-      padding: 16px 18px;
-      font-size: 13px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 7px;
-    }
-
-    .contact-row {
-      display: grid;
-      grid-template-columns: 122px 1fr;
-      align-items: baseline;
-      gap: 8px;
-    }
-
-    .contact-label {
-      font-weight: 700;
-      color: var(--espresso);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }
-
-    .contact-val {
-      color: var(--ink);
-      word-break: break-word;
-    }
-
-    .contact-val a {
-      color: var(--ocean);
-      text-decoration: none;
-      font-weight: 600;
-      border-bottom: 1px solid rgba(12, 100, 120, 0.35);
-    }
-
-    .contact-val a:hover {
-      color: var(--espresso);
-      border-bottom-color: var(--espresso);
-    }
-
-    /* Sections */
-    section {
-      margin-bottom: 34px;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 8px 16px;
-      margin-bottom: 14px;
-      border-bottom: 1.5px solid var(--sand);
-      padding-bottom: 7px;
-    }
-
-    h2 {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: 29px;
-      font-weight: 400;
-      line-height: 1.15;
-      color: var(--espresso);
-    }
-
-    .section-note {
-      font-size: 12.5px;
+      place-items: center;
+      font-family: var(--mono);
+      font-size: 0.8rem;
       color: var(--muted);
-      font-weight: 500;
+      transition: opacity 0.45s ease, visibility 0.45s;
     }
+    #boot.done { opacity: 0; visibility: hidden; }
+    .boot-box { width: min(420px, 86vw); }
+    .boot-line { opacity: 0; transform: translateY(4px); animation: bootIn 0.22s var(--ease) forwards; white-space: nowrap; overflow: hidden; }
+    .boot-line .ok { color: var(--cyan); }
+    .boot-bar { height: 2px; background: var(--line); margin-top: 16px; overflow: hidden; }
+    .boot-bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--verm), var(--amber)); animation: bootBar 0.95s var(--ease) forwards; }
+    @keyframes bootIn { to { opacity: 1; transform: none; } }
+    @keyframes bootBar { to { width: 100%; } }
 
-    /* Bio */
-    .bio {
-      background-color: var(--paper);
-      border: 1px solid var(--sand);
-      border-left: 4px solid var(--terracotta);
-      padding: 18px 22px;
-      font-size: 14.5px;
-      line-height: 1.65;
-      color: var(--ink);
+    /* ---------- Scroll progress + cursor ---------- */
+    .progress {
+      position: fixed; top: 0; left: 0; height: 2px; width: 100%;
+      transform-origin: 0 50%; transform: scaleX(0);
+      background: linear-gradient(90deg, var(--verm), var(--amber), var(--cyan));
+      z-index: 2001;
     }
-
-    /* Filter Buttons */
-    .filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 14px;
+    .cursor-ring {
+      position: fixed; top: 0; left: 0; width: 34px; height: 34px;
+      border: 1.5px solid rgba(236, 234, 228, 0.35);
+      border-radius: 50%; pointer-events: none; z-index: 9999;
+      will-change: transform; display: flex; align-items: center; justify-content: center;
+      transition: width .2s ease, height .2s ease, border-color .2s ease, margin .2s ease;
+      mix-blend-mode: difference;
     }
+    .cursor-ring::after { content: ''; width: 5px; height: 5px; background: var(--verm); border-radius: 50%; }
+    .cursor-ring.hot { width: 54px; height: 54px; margin: -10px 0 0 -10px; border-color: var(--verm); }
+    @media (hover: none), (max-width: 900px) { .cursor-ring { display: none; } }
 
-    .filter-btn {
-      background-color: var(--paper);
-      border: 1.5px solid var(--espresso);
-      color: var(--espresso);
-      padding: 7px 14px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 12.5px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.15s ease, color 0.15s ease;
+    /* ---------- Ticker ---------- */
+    .ticker {
+      position: relative; z-index: 2;
+      height: 38px; display: flex; align-items: center; overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background: rgba(12, 16, 19, 0.9);
+      font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--muted);
     }
-
-    .filter-btn:hover {
-      background-color: var(--blush);
+    .live-badge {
+      flex-shrink: 0; margin: 0 16px; padding: 3px 10px; border-radius: 4px;
+      background: var(--verm); color: #fff; font-weight: 700;
+      display: inline-flex; align-items: center; gap: 7px;
     }
+    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ADE80; animation: pulse 1.4s ease-in-out infinite; }
+    @keyframes pulse { 50% { transform: scale(1.5); opacity: .5; } }
+    .marquee { display: flex; white-space: nowrap; animation: marquee 34s linear infinite; }
+    .marquee span { padding-right: 40px; }
+    .marquee b { color: var(--amber); font-weight: 400; margin: 0 12px; }
+    @keyframes marquee { to { transform: translate3d(-50%, 0, 0); } }
 
-    .filter-btn.active {
-      background-color: var(--espresso);
-      color: var(--cream);
+    /* ---------- Nav ---------- */
+    .nav {
+      position: sticky; top: 0; z-index: 1000;
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      background: rgba(7, 9, 11, 0.72);
+      border-bottom: 1px solid var(--line);
     }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; height: 64px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-decoration: none; }
+    .logo-mark { width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--line-2); display: grid; place-items: center; position: relative; }
+    .logo-mark::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--verm); box-shadow: 0 0 12px var(--verm); }
+    .logo-mark::after { content: ''; position: absolute; inset: 4px; border-radius: 50%; border: 1.5px dashed var(--cyan); opacity: .7; animation: spin 9s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .nav-links { display: flex; gap: 26px; font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.07em; }
+    .nav-links a { text-decoration: none; color: var(--muted); position: relative; padding: 4px 0; transition: color .2s; }
+    .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 1px; width: 100%; background: var(--verm); transform: scaleX(0); transform-origin: right; transition: transform .3s var(--ease); }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-call {
+      font-family: var(--mono); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.04em;
+      text-decoration: none; padding: 9px 14px; border-radius: 8px;
+      background: var(--verm); color: #fff; display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 0 0 0 rgba(255, 90, 54, .6); animation: ring 2.6s ease-out infinite;
+    }
+    @keyframes ring { 0% { box-shadow: 0 0 0 0 rgba(255,90,54,.55); } 70%,100% { box-shadow: 0 0 0 14px rgba(255,90,54,0); } }
+    @media (max-width: 860px) { .nav-links { display: none; } }
 
-    /* Tracks Table */
-    .table-wrap {
-      width: 100%;
-      border: 1.5px solid var(--espresso);
-      background-color: var(--paper);
+    /* ---------- Hero ---------- */
+    .hero { position: relative; padding: 72px 0 56px; overflow: hidden; }
+    #neural { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: .9; }
+    .hero::after {
+      content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background: linear-gradient(180deg, transparent 60%, var(--bg) 100%), radial-gradient(ellipse at 30% 50%, rgba(7,9,11,.55), transparent 70%);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 48px; align-items: center; position: relative; z-index: 1; }
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 7px 14px; border-radius: 999px;
+      border: 1px solid rgba(74, 222, 128, .35); background: rgba(74, 222, 128, .08);
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.07em; color: #86EFAC;
+      margin-bottom: 26px;
+    }
+    .status-pill i { width: 7px; height: 7px; border-radius: 50%; background: #4ADE80; animation: pulse 1.4s infinite; }
+    .hero-role { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 14px; }
+    .hero-role span { color: var(--verm); }
+    .hero-name {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(3.4rem, 8vw, 6.6rem); line-height: 0.95; letter-spacing: -0.02em;
+      margin-bottom: 22px;
+    }
+    .hero-name .glitch { position: relative; display: inline-block; }
+    .hero-name em { font-style: italic; background: linear-gradient(100deg, var(--verm), var(--amber) 60%, var(--verm)); -webkit-background-clip: text; background-clip: text; color: transparent; background-size: 200% auto; animation: sheen 6s linear infinite; }
+    @keyframes sheen { to { background-position: 200% center; } }
+    .hero-sub { font-size: clamp(1.1rem, 1.7vw, 1.32rem); color: #CFD3D6; max-width: 600px; margin-bottom: 30px; font-weight: 500; }
+    .rotator { color: var(--cyan); font-family: var(--mono); font-weight: 600; font-size: 0.92em; white-space: nowrap; }
+    .rotator::after { content: '▌'; color: var(--verm); animation: blink 0.9s steps(1) infinite; margin-left: 2px; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 26px; }
+    .trust { display: flex; flex-wrap: wrap; gap: 18px; font-family: var(--mono); font-size: 0.72rem; color: var(--dim); letter-spacing: 0.05em; }
+    .trust b { color: var(--muted); font-weight: 600; }
+
+    /* Buttons */
+    .btn {
+      font-family: var(--mono); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.03em;
+      padding: 14px 20px; border-radius: 10px; cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px; border: 1px solid transparent;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .2s, border-color .2s;
+      position: relative; overflow: hidden; will-change: transform;
+    }
+    .btn::before {
+      content: ''; position: absolute; top: 0; left: -120%; width: 60%; height: 100%;
+      background: linear-gradient(110deg, transparent, rgba(255,255,255,.28), transparent);
+      transition: left .6s var(--ease);
+    }
+    .btn:hover::before { left: 130%; }
+    .btn-primary { background: var(--verm); color: #fff; box-shadow: 0 8px 30px -8px rgba(255,90,54,.7); }
+    .btn-primary:hover { box-shadow: 0 12px 40px -6px rgba(255,90,54,.9); }
+    .btn-ghost { background: rgba(236,234,228,.04); color: var(--ink); border-color: var(--line-2); }
+    .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+    .btn-wa { background: #1FAF54; color: #fff; box-shadow: 0 8px 30px -10px rgba(31,175,84,.8); }
+    .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* Telemetry card */
+    .telemetry {
+      position: relative; border-radius: 18px; padding: 20px;
+      background: var(--panel); border: 1px solid var(--line-2);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
       overflow: hidden;
+      box-shadow: 0 30px 80px -30px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    .telemetry::before {
+      content: ''; position: absolute; inset: -1px; border-radius: 18px; padding: 1px;
+      background: conic-gradient(from var(--angle), transparent 0 70%, var(--verm) 80%, var(--cyan) 90%, transparent 100%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      animation: rotateAngle 5s linear infinite; pointer-events: none;
+    }
+    @keyframes rotateAngle { to { --angle: 360deg; } }
+    .scan {
+      position: absolute; left: 0; right: 0; top: 0; height: 60px; pointer-events: none; z-index: 2;
+      background: linear-gradient(180deg, transparent, rgba(255,90,54,.08) 80%, rgba(255,90,54,.55) 100%);
+      animation: scan 2.8s cubic-bezier(.4,0,.2,1) infinite;
+    }
+    @keyframes scan { 0% { transform: translateY(-70px); } 100% { transform: translateY(420px); } }
+    .tel-head { display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; color: var(--verm); padding-bottom: 12px; margin-bottom: 14px; border-bottom: 1px solid var(--line); }
+    .tel-active { color: #86EFAC; display: inline-flex; gap: 6px; align-items: center; }
+    .tel-active::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #4ADE80; animation: pulse 1.4s infinite; }
+    .tel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .tile {
+      background: rgba(7,9,11,.6); border: 1px solid var(--line); border-left: 2px solid var(--verm);
+      border-radius: 10px; padding: 13px 14px; transition: transform .25s var(--ease), border-color .25s, background .25s;
+    }
+    .tile:hover { transform: translateY(-3px); border-color: var(--verm); background: rgba(255,90,54,.06); }
+    .tile-val { font-family: var(--mono); font-size: 1.45rem; font-weight: 700; line-height: 1.15; margin-bottom: 4px; }
+    .tile-lbl { font-family: var(--mono); font-size: 0.64rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+    .wave-wrap { margin-top: 12px; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px 6px; background: rgba(7,9,11,.6); }
+    .wave-lbl { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.62rem; color: var(--dim); letter-spacing: 0.08em; }
+    .wave-lbl b { color: var(--cyan); font-weight: 600; }
+    #wave { width: 100%; height: 54px; display: block; }
+
+    /* ---------- Credential marquee ---------- */
+    .creds { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 18px 0; overflow: hidden; position: relative; z-index: 1;
+      mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+    .creds-track { display: flex; gap: 56px; width: max-content; animation: marquee 40s linear infinite; font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.1em; color: var(--dim); }
+    .creds-track span { display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; transition: color .2s; }
+    .creds-track span:hover { color: var(--ink); }
+    .creds-track span::before { content: '◆'; color: var(--verm); font-size: .6rem; }
+
+    /* ---------- Sections ---------- */
+    section.block { padding: 84px 0 0; position: relative; z-index: 1; }
+    .sec-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 14px; margin-bottom: 30px; }
+    .sec-idx { font-family: var(--mono); font-size: 0.72rem; color: var(--verm); letter-spacing: 0.12em; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+    .sec-idx::after { content: ''; height: 1px; width: 0; background: var(--verm); transition: width 1s var(--ease) .2s; }
+    .in .sec-idx::after, .sec-head.in .sec-idx::after { width: 60px; }
+    .sec-title { font-family: var(--serif); font-weight: 400; font-size: clamp(2.1rem, 4vw, 3.1rem); line-height: 1.05; letter-spacing: -0.01em; }
+    .sec-title em { color: var(--verm); }
+    .sec-kicker { font-family: var(--mono); font-size: 0.7rem; color: var(--dim); letter-spacing: 0.1em; text-transform: uppercase; max-width: 340px; text-align: right; }
+
+    /* Reveal */
+    .reveal { opacity: 0; translate: 0 28px; transition: opacity .8s var(--ease), translate .8s var(--ease); transition-delay: var(--d, 0s); }
+    .reveal.in { opacity: 1; translate: 0 0; }
+
+    /* Contact strip */
+    .contact-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 40px; position: relative; z-index: 1; }
+    .c-card {
+      display: block; text-decoration: none; padding: 16px 18px; border-radius: 12px;
+      background: var(--panel); border: 1px solid var(--line); transition: border-color .25s, transform .25s var(--ease), background .25s;
+    }
+    a.c-card:hover { border-color: var(--verm); transform: translateY(-3px); background: rgba(255,90,54,.05); }
+    .c-lbl { font-family: var(--mono); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em; color: var(--verm); margin-bottom: 5px; }
+    .c-val { font-family: var(--mono); font-size: 0.84rem; font-weight: 600; word-break: break-word; }
+
+    /* About */
+    .about { display: grid; grid-template-columns: 1.6fr 1fr; gap: 22px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 30px; position: relative; overflow: hidden; }
+    .about-text { font-size: 1.05rem; color: #CFD3D6; line-height: 1.75; }
+    .about-text strong { color: var(--ink); }
+    .about-text .hl { color: var(--cyan); font-weight: 600; }
+    .stat-col { display: grid; gap: 12px; }
+    .stat { display: flex; align-items: baseline; gap: 14px; padding: 16px 20px; border-radius: 12px; background: var(--panel); border: 1px solid var(--line); }
+    .stat-num { font-family: var(--serif); font-size: 2.6rem; line-height: 1; color: var(--ink); min-width: 92px; }
+    .stat-num small { font-size: 1.3rem; color: var(--verm); }
+    .stat-txt { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.07em; color: var(--muted); text-transform: uppercase; }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .pill { font-family: var(--mono); font-size: 0.72rem; font-weight: 600; padding: 7px 11px; border-radius: 7px; border: 1px solid var(--line-2); color: var(--ink); background: rgba(236,234,228,.03); transition: border-color .2s, color .2s, transform .2s var(--ease); }
+    .pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
+
+    /* Programs */
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .f-btn { font-family: var(--mono); font-size: 0.74rem; font-weight: 600; padding: 9px 15px; border-radius: 8px; cursor: pointer; background: transparent; color: var(--muted); border: 1px solid var(--line-2); transition: all .2s; }
+    .f-btn:hover { color: var(--ink); border-color: var(--ink); }
+    .f-btn.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .tracks { display: grid; gap: 12px; }
+    .track {
+      border: 1px solid var(--line); border-radius: 14px; background: var(--panel); overflow: hidden;
+      transition: border-color .3s, background .3s, opacity .35s, transform .35s var(--ease);
+    }
+    .track:hover, .track.open { border-color: rgba(255,90,54,.5); }
+    .track.hide { display: none; }
+    .track-head {
+      width: 100%; text-align: left; background: none; border: 0; color: inherit; cursor: pointer; font: inherit;
+      display: grid; grid-template-columns: 70px 1.5fr 1fr 0.9fr 36px; gap: 18px; align-items: center; padding: 22px 24px;
+    }
+    .t-num { font-family: var(--serif); font-size: 2.6rem; line-height: 1; color: var(--dim); transition: color .3s; }
+    .track:hover .t-num, .track.open .t-num { color: var(--verm); }
+    .t-title { font-weight: 700; font-size: 1.08rem; margin-bottom: 6px; }
+    .t-tag { font-family: var(--mono); font-size: 0.64rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: var(--verm-soft); color: var(--verm); letter-spacing: .05em; }
+    .t-meta { font-size: 0.86rem; color: var(--muted); }
+    .t-meta strong { display: block; color: var(--ink); font-family: var(--mono); font-size: 0.82rem; }
+    .t-plus { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line-2); display: grid; place-items: center; transition: transform .4s var(--ease), background .3s, border-color .3s; }
+    .t-plus::before { content: '+'; font-family: var(--mono); font-size: 1.1rem; }
+    .track.open .t-plus { transform: rotate(135deg); background: var(--verm); border-color: var(--verm); }
+    .track-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .5s var(--ease); }
+    .track.open .track-body { grid-template-rows: 1fr; }
+    .track-body > div { overflow: hidden; }
+    .t-desc { padding: 0 24px 16px 112px; color: #CFD3D6; font-size: 0.95rem; max-width: 900px; }
+    .modules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 0 24px 24px 112px; }
+    .mod { background: rgba(7,9,11,.6); border: 1px solid var(--line); border-left: 2px solid var(--cyan); border-radius: 10px; padding: 14px; font-size: 0.88rem; color: #CFD3D6;
+      opacity: 0; translate: 0 10px; transition: opacity .5s var(--ease), translate .5s var(--ease); }
+    .track.open .mod { opacity: 1; translate: 0 0; }
+    .track.open .mod:nth-child(2) { transition-delay: .08s; }
+    .track.open .mod:nth-child(3) { transition-delay: .16s; }
+    .mod strong { display: block; font-family: var(--mono); font-size: 0.72rem; color: var(--cyan); margin-bottom: 4px; letter-spacing: .04em; }
+
+    /* Terminal */
+    .term-grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: 22px; align-items: stretch; }
+    .term-copy h3 { font-family: var(--serif); font-weight: 400; font-size: 2rem; line-height: 1.1; margin-bottom: 14px; }
+    .term-copy p { color: var(--muted); margin-bottom: 18px; }
+    .term-copy ul { list-style: none; display: grid; gap: 10px; }
+    .term-copy li { font-family: var(--mono); font-size: 0.8rem; color: #CFD3D6; display: flex; gap: 10px; }
+    .term-copy li::before { content: '→'; color: var(--verm); }
+    .terminal { border-radius: 14px; border: 1px solid var(--line-2); background: #050708; overflow: hidden; box-shadow: 0 30px 80px -30px rgba(0,0,0,.9), 0 0 0 1px rgba(94,234,212,.04); display: flex; flex-direction: column; min-height: 360px; }
+    .term-bar { display: flex; align-items: center; gap: 7px; padding: 11px 14px; border-bottom: 1px solid var(--line); background: #0B0F12; font-family: var(--mono); font-size: 0.68rem; color: var(--dim); }
+    .term-bar i { width: 10px; height: 10px; border-radius: 50%; background: #2A3036; }
+    .term-bar i:nth-child(1) { background: #FF5F57; } .term-bar i:nth-child(2) { background: #FEBC2E; } .term-bar i:nth-child(3) { background: #28C840; }
+    .term-bar span { margin-left: 8px; }
+    .term-body { padding: 16px 18px; font-family: var(--mono); font-size: 0.78rem; line-height: 1.75; color: #C9D1D9; flex: 1; white-space: pre-wrap; word-break: break-word; }
+    .term-body .p { color: var(--verm); } .term-body .c { color: var(--cyan); } .term-body .a { color: var(--amber); } .term-body .g { color: #86EFAC; } .term-body .d { color: var(--dim); }
+    .term-body .cur { display: inline-block; width: 8px; height: 1.05em; background: var(--cyan); vertical-align: text-bottom; animation: blink .9s steps(1) infinite; }
+    .term-foot { padding: 9px 14px; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 0.64rem; color: var(--dim); letter-spacing: .06em; display: flex; justify-content: space-between; }
+
+    /* Showcase */
+    .show-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; perspective: 1100px; }
+    .show {
+      --mx: 50%; --my: 50%;
+      position: relative; border-radius: 16px; padding: 26px 24px; min-height: 300px;
+      background: var(--panel); border: 1px solid var(--line);
+      display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
+      transform-style: preserve-3d; will-change: transform;
+      transition: transform .2s var(--ease), border-color .3s;
+    }
+    .show::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s;
+      background: radial-gradient(420px circle at var(--mx) var(--my), rgba(255,90,54,.16), transparent 45%);
+    }
+    .show:hover { border-color: rgba(255,90,54,.45); }
+    .show:hover::before { opacity: 1; }
+    .show-ico { width: 46px; height: 46px; border-radius: 12px; border: 1px solid var(--line-2); display: grid; place-items: center; margin-bottom: 20px; background: rgba(7,9,11,.6); }
+    .show-ico svg { width: 22px; height: 22px; stroke: var(--verm); }
+    .sys-tag { font-family: var(--mono); font-size: 0.66rem; font-weight: 700; color: var(--cyan); letter-spacing: 0.1em; margin-bottom: 10px; }
+    .show h3 { font-family: var(--serif); font-weight: 400; font-size: 1.65rem; line-height: 1.15; margin-bottom: 10px; }
+    .show p { font-size: 0.9rem; color: var(--muted); margin-bottom: 18px; }
+    .stack { font-family: var(--mono); font-size: 0.68rem; color: #CFD3D6; border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; background: rgba(7,9,11,.6); }
+
+    /* Stakeholders */
+    .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .tab { font-family: var(--mono); font-size: 0.74rem; font-weight: 600; padding: 10px 16px; border-radius: 8px; cursor: pointer; background: transparent; color: var(--muted); border: 1px solid var(--line-2); transition: all .2s; }
+    .tab:hover { color: var(--ink); }
+    .tab.active { background: var(--cyan); color: #04211D; border-color: var(--cyan); }
+    .st-panel { display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; align-items: start; }
+    .st-panel.swap { animation: swapIn .45s var(--ease); }
+    @keyframes swapIn { from { opacity: 0; transform: translateY(8px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+    .st-panel h3 { font-family: var(--serif); font-weight: 400; font-size: 1.8rem; line-height: 1.15; margin-bottom: 10px; }
+    .st-panel .sub { color: var(--muted); margin-bottom: 16px; }
+    .st-list { list-style: none; display: grid; gap: 12px; }
+    .st-list li { padding-left: 26px; position: relative; color: #CFD3D6; font-size: 0.94rem; }
+    .st-list li::before { content: '✓'; position: absolute; left: 0; color: var(--cyan); font-weight: 700; }
+    .badges { display: grid; gap: 10px; }
+    .badge { font-family: var(--mono); font-size: 0.7rem; font-weight: 700; letter-spacing: .06em; padding: 12px 14px; border-radius: 10px; border: 1px dashed var(--line-2); color: var(--cyan); background: var(--cyan-soft); }
+
+    /* Process */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; position: relative; }
+    .steps::before { content: ''; position: absolute; top: 30px; left: 8%; right: 8%; height: 1px; background: linear-gradient(90deg, var(--verm), var(--cyan)); transform: scaleX(0); transform-origin: left; transition: transform 1.4s var(--ease) .3s; }
+    .steps.in::before { transform: scaleX(1); }
+    .step { position: relative; padding-top: 6px; }
+    .step-dot { width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center; background: var(--bg); border: 1px solid var(--line-2); font-family: var(--mono); font-weight: 700; color: var(--verm); margin-bottom: 18px; position: relative; z-index: 1; }
+    .step h4 { font-size: 1.05rem; margin-bottom: 6px; }
+    .step p { color: var(--muted); font-size: 0.9rem; }
+
+    /* Booking */
+    .booking { position: relative; border-radius: 20px; padding: 40px; background: var(--panel); overflow: hidden; }
+    .booking::before {
+      content: ''; position: absolute; inset: 0; border-radius: 20px; padding: 1.5px;
+      background: conic-gradient(from var(--angle), var(--verm), var(--amber), var(--cyan), var(--verm));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      animation: rotateAngle 6s linear infinite; pointer-events: none; opacity: .8;
+    }
+    .booking::after { content: ''; position: absolute; width: 500px; height: 500px; right: -200px; top: -250px; background: radial-gradient(circle, rgba(255,90,54,.18), transparent 65%); pointer-events: none; }
+    .book-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; position: relative; z-index: 1; }
+    .book-left h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 3.6vw, 2.9rem); line-height: 1.05; margin-bottom: 14px; }
+    .book-left p { color: var(--muted); margin-bottom: 22px; font-size: 0.95rem; }
+    .big-phone { display: inline-block; font-family: var(--mono); font-size: clamp(1.3rem, 2.6vw, 1.9rem); font-weight: 700; color: var(--ink); text-decoration: none; margin-bottom: 8px; border-bottom: 2px solid var(--verm); transition: color .2s; }
+    .big-phone:hover { color: var(--verm); }
+    .book-note { font-family: var(--mono); font-size: 0.7rem; color: var(--dim); letter-spacing: .04em; }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { display: block; font-family: var(--mono); font-size: 0.66rem; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 6px; }
+    .field input, .field select {
+      width: 100%; padding: 12px 13px; border-radius: 9px; border: 1px solid var(--line-2);
+      background: rgba(7,9,11,.7); color: var(--ink); font-family: var(--sans); font-size: 0.92rem;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .field input:focus, .field select:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px var(--cyan-soft); }
+    .field select option { background: var(--panel-solid); }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    footer { margin-top: 90px; padding: 26px 0 110px; border-top: 1px solid var(--line); position: relative; z-index: 1; }
+    .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-family: var(--mono); font-size: 0.72rem; color: var(--dim); }
+    .foot a { text-decoration: none; } .foot a:hover { color: var(--verm); }
+
+    /* Floating dock */
+    .dock { position: fixed; right: 20px; bottom: 20px; z-index: 1500; display: flex; flex-direction: column; gap: 10px; transform: translateY(140%); transition: transform .5s var(--ease); }
+    .dock.show-dock { transform: none; }
+    .dock a { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; text-decoration: none; position: relative; transition: transform .25s var(--ease); }
+    .dock a:hover { transform: scale(1.08); }
+    .dock a svg { width: 24px; height: 24px; }
+    .dock .d-wa { background: #1FAF54; box-shadow: 0 10px 30px -8px rgba(31,175,84,.8); }
+    .dock .d-call { background: var(--verm); box-shadow: 0 10px 30px -8px rgba(255,90,54,.8); animation: ring 2.6s ease-out infinite; }
+    .dock a span { position: absolute; right: 68px; white-space: nowrap; font-family: var(--mono); font-size: 0.72rem; font-weight: 700; padding: 6px 10px; border-radius: 6px; background: var(--panel-solid); border: 1px solid var(--line-2); color: var(--ink); opacity: 0; translate: 6px 0; transition: opacity .2s, translate .2s; pointer-events: none; }
+    .dock a:hover span { opacity: 1; translate: 0 0; }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .hero-grid, .about, .term-grid, .st-panel, .book-grid { grid-template-columns: 1fr; }
+      .show-grid, .steps { grid-template-columns: 1fr; }
+      .steps::before { display: none; }
+      .contact-strip { grid-template-columns: 1fr 1fr; }
+      .track-head { grid-template-columns: 48px 1fr 36px; }
+      .track-head .t-meta { display: none; }
+      .t-num { font-size: 2rem; }
+      .t-desc, .modules { padding-left: 24px; }
+      .modules { grid-template-columns: 1fr; }
+      .t-mobile-meta { display: block !important; }
+      .sec-kicker { text-align: left; }
+    }
+    @media (max-width: 560px) {
+      .wrap { padding: 0 18px; }
+      .hero { padding-top: 48px; }
+      .contact-strip, .fields { grid-template-columns: 1fr; }
+      .booking { padding: 26px 20px; }
+      .panel { padding: 22px; }
+      .nav-call .lbl { display: none; }
+    }
+    .t-mobile-meta { display: none; font-family: var(--mono); font-size: 0.7rem; color: var(--muted); margin-top: 6px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.001s !important; animation-iteration-count: 1 !important; transition-duration: 0.001s !important; }
+      .reveal { opacity: 1; translate: none; }
+      #boot { display: none; }
+      .scan { display: none; }
     }
 
-    .tracks-table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: fixed;
-      font-size: 13.5px;
-    }
-
-    .tracks-table th {
-      background-color: var(--espresso);
-      color: var(--cream);
-      text-align: left;
-      padding: 12px 15px;
-      font-weight: 600;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      border-right: 1px solid rgba(250, 240, 232, 0.22);
-    }
-
-    .tracks-table th:last-child {
-      border-right: none;
-    }
-
-    .tracks-table td {
-      padding: 14px 15px;
-      vertical-align: top;
-      border-top: 1px solid var(--sand);
-      border-right: 1px solid var(--sand);
-      line-height: 1.5;
-    }
-
-    .tracks-table td:last-child {
-      border-right: none;
-    }
-
-    .tracks-table tbody tr:first-child td {
-      border-top: none;
-    }
-
-    .tracks-table tr.track-row {
-      cursor: pointer;
-      transition: background-color 0.15s ease;
-    }
-
-    .tracks-table tr.track-row:hover {
-      background-color: #FAF1EE;
-    }
-
-    .tracks-table tr.track-row.selected {
-      background-color: var(--blush);
-    }
-
-    .track-title {
-      font-weight: 700;
-      color: var(--espresso);
-      font-size: 14px;
-      line-height: 1.35;
-      margin-bottom: 7px;
-      display: block;
-    }
-
-    .badge {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10.5px;
-      padding: 2px 8px;
-      background-color: var(--cream);
-      color: var(--olive);
-      border: 1px solid rgba(62, 53, 14, 0.35);
-    }
-
-    .audience-age {
-      font-weight: 700;
-      color: var(--olive);
-      display: block;
-      margin-bottom: 3px;
-    }
-
-    .audience-stream {
-      font-size: 12.5px;
-      color: var(--muted);
-      display: block;
-    }
-
-    .format-type {
-      display: block;
-      color: var(--ink);
-      margin-bottom: 3px;
-    }
-
-    .format-duration {
-      font-weight: 700;
-      color: var(--umber);
-      font-size: 13px;
-    }
-
-    /* Syllabus Drawer */
-    .syllabus-drawer {
-      margin-top: 14px;
-      background-color: var(--paper);
-      border: 1.5px solid var(--umber);
-      padding: 18px 20px;
-      display: none;
-    }
-
-    .syllabus-drawer.open {
-      display: block;
-    }
-
-    .drawer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--sand);
-    }
-
-    .drawer-title {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: 24px;
-      color: var(--umber);
-      line-height: 1.2;
-    }
-
-    .close-btn {
-      background-color: var(--cream);
-      border: 1px solid var(--umber);
-      color: var(--umber);
-      padding: 4px 12px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .close-btn:hover {
-      background-color: var(--umber);
-      color: var(--cream);
-    }
-
-    .syllabus-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      font-size: 13px;
-    }
-
-    .syllabus-box {
-      background-color: var(--cream);
-      border: 1px solid var(--sand);
-      padding: 13px 15px;
-      line-height: 1.5;
-    }
-
-    .syllabus-box strong {
-      display: block;
-      color: var(--espresso);
-      margin-bottom: 5px;
-      font-size: 11.5px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* Live Demos Grid */
-    .demo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      align-items: stretch;
-    }
-
-    .demo-card {
-      background-color: var(--paper);
-      border: 1.5px solid var(--olive);
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .demo-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10.5px;
-      color: var(--ocean);
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      margin-bottom: 6px;
-    }
-
-    .demo-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 1.3;
-      color: var(--olive);
-      margin-bottom: 8px;
-    }
-
-    .demo-card p {
-      font-size: 13.5px;
-      line-height: 1.55;
-      color: var(--ink);
-    }
-
-    .demo-stack {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      line-height: 1.45;
-      background-color: var(--sand);
-      padding: 8px 10px;
-      color: var(--espresso);
-      border: 1px solid rgba(112, 44, 43, 0.25);
-    }
-
-    /* Institutional Alignment */
-    .tab-buttons {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .tab-btn {
-      background-color: var(--paper);
-      border: 1.5px solid var(--ocean);
-      color: var(--ocean);
-      padding: 9px 14px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      text-align: center;
-      cursor: pointer;
-      transition: background-color 0.15s ease, color 0.15s ease;
-    }
-
-    .tab-btn:hover {
-      background-color: #E6F2F4;
-    }
-
-    .tab-btn.active {
-      background-color: var(--ocean);
-      color: #FFFFFF;
-    }
-
-    .tab-panel {
-      background-color: var(--paper);
-      border: 1.5px solid var(--ocean);
-      padding: 18px 22px;
-      font-size: 14px;
-    }
-
-    .tab-panel h4 {
-      color: var(--ocean);
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .tab-panel p {
-      margin-bottom: 8px;
-      color: var(--muted);
-      font-size: 13.5px;
-    }
-
-    .tab-panel ul {
-      padding-left: 20px;
-    }
-
-    .tab-panel li {
-      margin-bottom: 5px;
-      line-height: 1.5;
-    }
-
-    .tab-panel li:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Quick Inquiry Builder */
-    .inquiry-box {
-      background-color: var(--sand);
-      border: 1.5px solid var(--espresso);
-      padding: 22px 24px;
-      margin-bottom: 0;
-    }
-
-    .inquiry-box .section-header {
-      border-bottom-color: rgba(112, 44, 43, 0.25);
-      margin-bottom: 10px;
-    }
-
-    .logistics-note {
-      font-size: 13.5px;
-      line-height: 1.55;
-      color: var(--ink);
-      margin-bottom: 14px;
-    }
-
-    .inquiry-controls {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-bottom: 16px;
-    }
-
-    .inquiry-controls label {
-      display: block;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--espresso);
-      margin-bottom: 5px;
-    }
-
-    .inquiry-controls select,
-    .inquiry-controls input {
-      width: 100%;
-      height: 38px;
-      padding: 0 11px;
-      border: 1.5px solid var(--espresso);
-      background-color: var(--paper);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 13px;
-      color: var(--ink);
-      outline: none;
-    }
-
-    .inquiry-controls select:focus,
-    .inquiry-controls input:focus {
-      border-color: var(--ocean);
-    }
-
-    .action-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .primary-btn,
-    .secondary-btn {
-      height: 38px;
-      padding: 0 18px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1.5px solid var(--espresso);
-    }
-
-    .primary-btn {
-      background-color: var(--espresso);
-      color: var(--cream);
-    }
-
-    .primary-btn:hover {
-      background-color: var(--umber);
-      border-color: var(--umber);
-    }
-
-    .secondary-btn {
-      background-color: var(--paper);
-      color: var(--espresso);
-    }
-
-    .secondary-btn:hover {
-      background-color: var(--blush);
-    }
-
-    /* Footer */
-    footer {
-      margin-top: 26px;
-      padding-top: 16px;
-      border-top: 1.5px solid var(--espresso);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      font-size: 12.5px;
-      color: var(--muted);
-    }
-
-    /* Print Styling (2-Page Clean Layout) */
     @media print {
-      body {
-        background: #FFFFFF;
-        padding: 0;
-      }
-      .sheet {
-        box-shadow: none;
-        border: 2px solid #000000;
-        padding: 24px 28px;
-        max-width: 100%;
-      }
-      .filter-bar,
-      .inquiry-box,
-      .no-print {
-        display: none !important;
-      }
-      section {
-        margin-bottom: 22px;
-      }
-      .demo-card,
-      .table-wrap,
-      .tab-panel {
-        break-inside: avoid;
-      }
-    }
-
-    /* Responsive Mobile Layout */
-    @media (max-width: 860px) {
-      header {
-        grid-template-columns: 1fr;
-      }
-      .demo-grid,
-      .syllabus-grid,
-      .tab-buttons,
-      .inquiry-controls {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .sheet {
-        padding: 24px 18px;
-      }
-      h1 {
-        font-size: 38px;
-      }
-      .contact-row {
-        grid-template-columns: 1fr;
-        gap: 2px;
-      }
-      .tracks-table,
-      .tracks-table thead,
-      .tracks-table tbody,
-      .tracks-table th,
-      .tracks-table td,
-      .tracks-table tr {
-        display: block;
-        width: 100%;
-      }
-      .tracks-table thead {
-        display: none;
-      }
-      .tracks-table tr.track-row {
-        border-bottom: 1.5px solid var(--espresso);
-        padding: 12px 14px;
-      }
-      .tracks-table tr.track-row:last-child {
-        border-bottom: none;
-      }
-      .tracks-table td {
-        border: none;
-        padding: 4px 0;
-      }
+      html, body { background: #fff !important; color: #111 !important; }
+      body::before, .ticker, .nav, .cursor-ring, .dock, #boot, .progress, #neural, .filters, .actions, .creds, .scan, .terminal, .hero::after { display: none !important; }
+      .reveal { opacity: 1 !important; translate: none !important; }
+      .panel, .track, .show, .telemetry, .booking, .c-card, .stat, .tile, .mod { background: #fff !important; border-color: #ccc !important; box-shadow: none !important; color: #111 !important; }
+      .track-body { grid-template-rows: 1fr !important; } .mod { opacity: 1 !important; translate: none !important; }
+      .about-text, .t-desc, .mod, .st-list li, .hero-sub { color: #222 !important; }
+      .hero-name em { color: #C8432B !important; -webkit-text-fill-color: #C8432B; }
+      section.block { padding-top: 36px; break-inside: avoid; }
     }
   </style>
 </head>
 <body>
-  <div class="sheet">
-    <!-- Header -->
-    <header>
-      <div>
-        <div class="eyebrow">AI Educator &bull; Autonomous Agent Architect &bull; Engineering Faculty</div>
-        <h1>Hansal Gandhi</h1>
-        <p class="tagline">From Curiosity to Working Prototypes &mdash; Practical AI Literacy, Prompt Engineering, and Applied Tool-Building for Ages 15&ndash;25</p>
-      </div>
-      <div class="contact-card">
-        <div class="contact-row">
-          <span class="contact-label">Region</span>
-          <span class="contact-val">Mumbai, Navi Mumbai, Thane &amp; Palghar</span>
-        </div>
-        <div class="contact-row">
-          <span class="contact-label">Phone / WA</span>
-          <span class="contact-val"><a href="tel:+919699078983">+91 96990 78983</a></span>
-        </div>
-        <div class="contact-row">
-          <span class="contact-label">Email</span>
-          <span class="contact-val"><a href="mailto:hansalgandhi@gmail.com">hansalgandhi@gmail.com</a></span>
-        </div>
-        <div class="contact-row">
-          <span class="contact-label">LinkedIn</span>
-          <span class="contact-val"><a href="https://www.linkedin.com/in/hansalgandhi" target="_blank" rel="noopener">linkedin.com/in/hansalgandhi</a></span>
-        </div>
-      </div>
-    </header>
 
-    <!-- Speaker Profile -->
-    <section>
-      <div class="section-header">
-        <h2>About the Speaker</h2>
-        <span class="section-note">Academic &amp; Applied Engineering Background</span>
-      </div>
-      <div class="bio">
-        Hansal Gandhi is a Mumbai-based engineering educator and former Assistant Professor of Computer Engineering at Fr. Conceicao Rodrigues College of Engineering, Bandra, with prior engineering experience in the United States. Specializing in autonomous multi-agent AI systems, applied LLM workflows, and rapid software prototyping, Hansal bridges the gap between textbook theory and real-world engineering&mdash;guiding students aged 15&ndash;25 from passive AI usage to building working, responsible AI applications.
-      </div>
-    </section>
+  <!-- Boot sequence -->
+  <div id="boot" aria-hidden="true">
+    <div class="boot-box" id="bootBox"></div>
+  </div>
 
-    <!-- Interactive Seminars & Workshops -->
-    <section>
-      <div class="section-header">
-        <h2>Signature Seminars &amp; Hands-On Workshops (Ages 15&ndash;25)</h2>
-        <span class="section-note no-print">Filter by level or click any row to view syllabus</span>
-      </div>
+  <div class="progress" id="progress"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
-      <div class="filter-bar no-print">
-        <button type="button" class="filter-btn active" data-filter="all">All Programs (15&ndash;25 yrs)</button>
-        <button type="button" class="filter-btn" data-filter="junior">Junior College (15&ndash;18 yrs)</button>
-        <button type="button" class="filter-btn" data-filter="degree">Degree / Commerce / Mgmt (17&ndash;22 yrs)</button>
-        <button type="button" class="filter-btn" data-filter="engineering">Engineering &amp; Tech Chapters (18&ndash;25 yrs)</button>
+  <!-- Ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div class="live-badge"><span class="live-dot"></span>LIVE LABS</div>
+    <div style="overflow:hidden;flex:1;display:flex">
+      <div class="marquee">
+        <span>AGES 15–25 CURRICULUM<b>✦</b>MUMBAI · NAVI MUMBAI · THANE · PALGHAR<b>✦</b>AUTONOMOUS MULTI-AGENT SYSTEMS<b>✦</b>PYTHON &amp; RAG BOOTCAMPS<b>✦</b>NEP 2020 SEC / VSC / VAC<b>✦</b>NAAC AQAR DOCUMENTATION<b>✦</b>EDGE-AI ESP32-C3 PROTOTYPING<b>✦</b></span>
+        <span>AGES 15–25 CURRICULUM<b>✦</b>MUMBAI · NAVI MUMBAI · THANE · PALGHAR<b>✦</b>AUTONOMOUS MULTI-AGENT SYSTEMS<b>✦</b>PYTHON &amp; RAG BOOTCAMPS<b>✦</b>NEP 2020 SEC / VSC / VAC<b>✦</b>NAAC AQAR DOCUMENTATION<b>✦</b>EDGE-AI ESP32-C3 PROTOTYPING<b>✦</b></span>
       </div>
+    </div>
+  </div>
 
-      <div class="table-wrap">
-        <table class="tracks-table">
-          <colgroup>
-            <col style="width: 26%;">
-            <col style="width: 22%;">
-            <col style="width: 18%;">
-            <col style="width: 34%;">
-          </colgroup>
-          <thead>
-            <tr>
-              <th>Program Title</th>
-              <th>Target Audience</th>
-              <th>Format &amp; Duration</th>
-              <th>Core Curriculum &amp; Student Outcomes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="track-row" data-category="junior" data-track="0">
-              <td>
-                <span class="track-title">AI in Everyday Life &amp; How Machines Learn</span>
-                <span class="badge">Track 01 &bull; Foundation</span>
-              </td>
-              <td>
-                <span class="audience-age">15&ndash;18 yrs</span>
-                <span class="audience-stream">FYJC / SYJC (Science, Commerce, Arts, HSC IT)</span>
-              </td>
-              <td>
-                <span class="format-type">Interactive Seminar + Live Demo</span>
-                <span class="format-duration">60&ndash;90 Mins</span>
-              </td>
-              <td>Demystifies machine learning, computer vision, and LLMs without heavy math; covers AI career pathways, data privacy, and academic integrity aligned with Class 11&ndash;12 AI &amp; HSC IT foundations.</td>
-            </tr>
-            <tr class="track-row" data-category="degree" data-track="1">
-              <td>
-                <span class="track-title">Prompt Engineering &amp; Responsible AI Productivity</span>
-                <span class="badge">Track 02 &bull; Applied Lab</span>
-              </td>
-              <td>
-                <span class="audience-age">17&ndash;22 yrs</span>
-                <span class="audience-stream">FY/SY/TY B.Sc., B.Com., BAF, BMS, B.Ed.</span>
-              </td>
-              <td>
-                <span class="format-type">Hands-On Lab Workshop</span>
-                <span class="format-duration">2&ndash;3 Hours</span>
-              </td>
-              <td>Teaches structured prompting (Zero-Shot, Few-Shot, Chain-of-Thought, Prompt Chaining), output verification, hallucination detection, and ethical workplace AI adoption.</td>
-            </tr>
-            <tr class="track-row" data-category="engineering" data-track="2">
-              <td>
-                <span class="track-title">Building Real-World AI Apps with Python &amp; RAG</span>
-                <span class="badge">Track 03 &bull; Bootcamp</span>
-              </td>
-              <td>
-                <span class="audience-age">18&ndash;25 yrs</span>
-                <span class="audience-stream">B.Sc. CS/IT/AI, B.E./B.Tech., MCA</span>
-              </td>
-              <td>
-                <span class="format-type">Intensive Bootcamp</span>
-                <span class="format-duration">1&ndash;2 Days</span>
-              </td>
-              <td>Guides students step-by-step through Python LLM pipelines, Retrieval-Augmented Generation (RAG), and vector search so teams build and deploy a working Q&amp;A prototype.</td>
-            </tr>
-            <tr class="track-row" data-category="engineering" data-track="3">
-              <td>
-                <span class="track-title">Agentic AI, Tool Calling &amp; Guardrails</span>
-                <span class="badge">Track 04 &bull; Capstone</span>
-              </td>
-              <td>
-                <span class="audience-age">20&ndash;25 yrs</span>
-                <span class="audience-stream">TE/BE Engineering, PG, Tech Chapters</span>
-              </td>
-              <td>
-                <span class="format-type">Capstone Workshop</span>
-                <span class="format-duration">2 Days</span>
-              </td>
-              <td>Covers reasoning loops, Model Context Protocol (MCP), multi-agent orchestration, tool calling, evaluation metrics, and prompt-injection defense.</td>
-            </tr>
-          </tbody>
-        </table>
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="#top"><span class="logo-mark"></span>HANSAL&nbsp;GANDHI<span style="color:var(--verm)">/AI</span></a>
+      <div class="nav-links">
+        <a href="#programs">PROGRAMS</a>
+        <a href="#demo">LIVE DEMO</a>
+        <a href="#systems">SYSTEMS</a>
+        <a href="#colleges">FOR COLLEGES</a>
+        <a href="#book">BOOK</a>
       </div>
+      <a class="nav-call magnetic" href="tel:+919699078983" aria-label="Call Hansal Gandhi">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+        <span class="lbl">CALL NOW</span>
+      </a>
+    </div>
+  </nav>
 
-      <div id="syllabus-drawer" class="syllabus-drawer no-print">
-        <div class="drawer-top">
-          <div class="drawer-title" id="drawer-title">Module Outline</div>
-          <button type="button" class="close-btn" id="close-drawer">Close &times;</button>
-        </div>
-        <div class="syllabus-grid" id="drawer-body"></div>
-      </div>
-    </section>
-
-    <!-- Live Demo Showcase -->
-    <section>
-      <div class="section-header">
-        <h2>Live Demo Showcase: Built &amp; Deployed AI Systems</h2>
-        <span class="section-note">Demonstrated live during campus sessions</span>
-      </div>
-      <div class="demo-grid">
-        <div class="demo-card">
-          <div>
-            <div class="demo-tag">SYSTEM 01 &bull; DISTRIBUTED AGENTS</div>
-            <h3>Multi-Node Autonomous Agent Orchestrator</h3>
-            <p>Demonstrates live task decomposition, autonomous tool execution, and multi-agent coordination across local Linux machines and cloud nodes in real time.</p>
-          </div>
-          <div class="demo-stack">Stack: Lead Orchestrator + Sub-Agent Harnesses, Linux &amp; Cloud Nodes</div>
-        </div>
-        <div class="demo-card">
-          <div>
-            <div class="demo-tag">SYSTEM 02 &bull; FULL-STACK AUTOMATION</div>
-            <h3>Operational Web &amp; Workflow Suite</h3>
-            <p>Production web platforms&mdash;including attendance trackers, project management boards, and automated BOQ/catalog builders&mdash;showing how AI accelerates real software delivery.</p>
-          </div>
-          <div class="demo-stack">Stack: Full-Stack Web Apps, Structured Data Pipelines &amp; Automation</div>
-        </div>
-        <div class="demo-card">
-          <div>
-            <div class="demo-tag">SYSTEM 03 &bull; CYBER-PHYSICAL SYSTEMS</div>
-            <h3>Edge-AI &amp; IoT Hardware Prototyping</h3>
-            <p>Illustrates how software intelligence connects to physical sensors, cellular telemetry, and real-world power/enclosure constraints for engineering cohorts.</p>
-          </div>
-          <div class="demo-stack">Stack: ESP32-C3, Cellular Modem, Motion Sensors, 3D-Printed Enclosures</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- NEP 2020 & IQAC Alignment -->
-    <section>
-      <div class="section-header">
-        <h2>NEP 2020, IQAC &amp; Departmental Alignment (Mumbai Colleges)</h2>
-        <span class="section-note no-print">Select stakeholder role to view deliverables</span>
-      </div>
-
-      <div class="tab-buttons no-print">
-        <button type="button" class="tab-btn active" data-tab="iqac">Principal &amp; IQAC Coordinator</button>
-        <button type="button" class="tab-btn" data-tab="tnp">Training &amp; Placement (T&amp;P) Cell</button>
-        <button type="button" class="tab-btn" data-tab="dept">CS/IT/AI Depts &amp; Student Chapters</button>
-      </div>
-
-      <div class="tab-panel" id="stakeholder-panel"></div>
-    </section>
-
-    <!-- Logistics & Quick Booking -->
-    <section class="inquiry-box no-print">
-      <div class="section-header">
-        <h2>Schedule a Campus Session or Workshop</h2>
-        <span class="section-note">On-Campus (Mumbai / Navi Mumbai / Thane / Palghar) or Live Online</span>
-      </div>
-      <p class="logistics-note">
-        <strong>Infrastructure:</strong> Projector &amp; internet for seminars; student laptops or lab PCs (browser/Python access) for hands-on workshops. Co-branded participation e-certificates and starter repositories included.
-      </p>
-      <div class="inquiry-controls">
+  <!-- Hero -->
+  <header class="hero" id="top">
+    <canvas id="neural" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="hero-grid">
         <div>
-          <label for="college-input">College / Department Name</label>
-          <input type="text" id="college-input" placeholder="e.g., St. Xavier's / DJ Sanghvi / TCSC" />
+          <div class="status-pill reveal"><i></i>2026–27 ACADEMIC COHORT · BOOKINGS OPEN</div>
+          <div class="hero-role reveal" style="--d:.08s">AI EDUCATOR <span>/</span> AGENT ARCHITECT <span>/</span> FORMER ENGINEERING FACULTY</div>
+          <h1 class="hero-name reveal" style="--d:.14s"><span class="glitch" id="nameA" data-text="Hansal">Hansal</span><br><em id="nameB" data-text="Gandhi">Gandhi</em></h1>
+          <p class="hero-sub reveal" style="--d:.22s">
+            From curiosity to working prototypes — hands-on
+            <span class="rotator" id="rotator">AI literacy</span>
+            for students aged 15–25.
+          </p>
+          <div class="hero-ctas reveal" style="--d:.3s">
+            <a class="btn btn-primary magnetic" href="tel:+919699078983">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+              Call +91 96990 78983
+            </a>
+            <a class="btn btn-ghost magnetic" href="#programs">Explore the 4 tracks →</a>
+          </div>
+          <div class="trust reveal" style="--d:.38s">
+            <span><b>Ex-Asst. Professor</b> · Fr. CRCE, Bandra</span>
+            <span><b>~10 yrs</b> US industry</span>
+            <span><b>MS</b> Information Systems, NJIT</span>
+          </div>
         </div>
-        <div>
-          <label for="track-select">Preferred Program Track</label>
-          <select id="track-select">
-            <option value="Track 01: AI in Everyday Life & How Machines Learn (60-90 Mins)">Track 01: Junior College Seminar (60&ndash;90 Mins)</option>
-            <option value="Track 02: Prompt Engineering & Responsible AI Productivity (2-3 Hours)">Track 02: Degree College Lab (2&ndash;3 Hours)</option>
-            <option value="Track 03: Building Real-World AI Apps with Python & RAG (1-2 Days)">Track 03: Python &amp; RAG Bootcamp (1&ndash;2 Days)</option>
-            <option value="Track 04: Agentic AI, Tool Calling & Guardrails (2 Days)">Track 04: Agentic AI Capstone (2 Days)</option>
-          </select>
-        </div>
-        <div>
-          <label for="mode-select">Delivery Format</label>
-          <select id="mode-select">
-            <option value="On-Campus (Mumbai Metropolitan Region)">On-Campus (Mumbai / Thane / Navi Mumbai)</option>
-            <option value="Live Interactive Online">Live Interactive Online</option>
-          </select>
-        </div>
+
+        <aside class="telemetry reveal" style="--d:.2s" aria-label="Programme at a glance">
+          <div class="scan"></div>
+          <div class="tel-head"><span>SYS.TELEMETRY // MMR</span><span class="tel-active">ACTIVE</span></div>
+          <div class="tel-grid">
+            <div class="tile"><div class="tile-val"><span class="count" data-to="15">0</span>–<span class="count" data-to="25">0</span></div><div class="tile-lbl">Target age cohort</div></div>
+            <div class="tile"><div class="tile-val"><span class="count" data-to="4">0</span> TRACKS</div><div class="tile-lbl">Modular syllabi</div></div>
+            <div class="tile"><div class="tile-val">~<span class="count" data-to="10">0</span> YRS</div><div class="tile-lbl">US industry experience</div></div>
+            <div class="tile"><div class="tile-val">NEP <span class="count" data-to="2020" data-fast="1">0</span></div><div class="tile-lbl">NAAC AQAR ready</div></div>
+          </div>
+          <div class="wave-wrap">
+            <div class="wave-lbl"><span>LIVE LAB SIGNAL</span><b>● LIVE</b></div>
+            <canvas id="wave" aria-hidden="true"></canvas>
+          </div>
+        </aside>
       </div>
-      <div class="action-row">
-        <a id="whatsapp-link" class="primary-btn" href="https://wa.me/919699078983" target="_blank" rel="noopener">Inquire via WhatsApp (+91 96990 78983)</a>
-        <a id="email-link" class="secondary-btn" href="mailto:hansalgandhi@gmail.com">Send Email Inquiry</a>
-        <button type="button" class="secondary-btn" onclick="window.print()">Print / Save 2-Page PDF</button>
+
+      <div class="contact-strip">
+        <div class="c-card reveal"><div class="c-lbl">REGION</div><div class="c-val">Mumbai · Navi Mumbai · Thane · Palghar</div></div>
+        <a class="c-card reveal" style="--d:.06s" href="https://wa.me/919699078983" target="_blank" rel="noopener"><div class="c-lbl">PHONE / WHATSAPP</div><div class="c-val">+91 96990 78983</div></a>
+        <a class="c-card reveal" style="--d:.12s" href="mailto:hansalgandhi@gmail.com"><div class="c-lbl">DIRECT EMAIL</div><div class="c-val">hansalgandhi@gmail.com</div></a>
+        <a class="c-card reveal" style="--d:.18s" href="https://www.linkedin.com/in/hansalgandhi" target="_blank" rel="noopener"><div class="c-lbl">LINKEDIN</div><div class="c-val">in/hansalgandhi</div></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Credentials marquee -->
+  <div class="creds" aria-label="Background">
+    <div class="creds-track">
+      <span>FR. CONCEICAO RODRIGUES COLLEGE OF ENGINEERING</span><span>NJIT · MS INFORMATION SYSTEMS</span><span>VERIZON WIRELESS</span><span>HARRIS COMPUTER SYSTEMS</span><span>AML RIGHTSOURCE</span><span>MUMBAI UNIVERSITY · BE IT</span>
+      <span>FR. CONCEICAO RODRIGUES COLLEGE OF ENGINEERING</span><span>NJIT · MS INFORMATION SYSTEMS</span><span>VERIZON WIRELESS</span><span>HARRIS COMPUTER SYSTEMS</span><span>AML RIGHTSOURCE</span><span>MUMBAI UNIVERSITY · BE IT</span>
+    </div>
+  </div>
+
+  <main>
+    <!-- About -->
+    <section class="block" id="about">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div><div class="sec-idx">01 // SPEAKER</div><h2 class="sec-title">Theory meets <em>production</em>.</h2></div>
+          <span class="sec-kicker">Academic &amp; applied engineering background</span>
+        </div>
+        <div class="about">
+          <div class="panel reveal">
+            <p class="about-text">
+              <strong>Hansal Gandhi</strong> is a Mumbai-based AI educator and systems builder — a <strong>former Assistant Professor of Computer Engineering</strong> at Fr. Conceicao Rodrigues College of Engineering (Bandra), with <span class="hl">about a decade of US industry experience</span> across healthcare, telecom and financial-crime analytics at companies including Verizon Wireless, Harris Computer Systems and AML RightSource.
+              <br><br>
+              He specialises in autonomous multi-agent systems, applied LLM workflows and rapid hardware-software prototyping — taking students from <em>passively chatting with AI</em> to <span class="hl">building verifiable, responsible AI systems</span> they can show in an interview.
+            </p>
+            <div class="pills">
+              <span class="pill">Multi-Agent Orchestration</span><span class="pill">Python &amp; RAG Pipelines</span><span class="pill">Model Context Protocol (MCP)</span><span class="pill">ESP32-C3 Edge AI</span><span class="pill">Prompt Guardrails</span><span class="pill">Bloom's Taxonomy COs</span>
+            </div>
+          </div>
+          <div class="stat-col">
+            <div class="stat reveal" style="--d:.06s"><div class="stat-num"><span class="count" data-to="10">0</span><small>yrs</small></div><div class="stat-txt">US IT &amp; data analytics experience</div></div>
+            <div class="stat reveal" style="--d:.12s"><div class="stat-num"><span class="count" data-to="4">0</span></div><div class="stat-txt">Programme tracks, seminar to 2-day capstone</div></div>
+            <div class="stat reveal" style="--d:.18s"><div class="stat-num"><span class="count" data-to="30">0</span><small>hrs</small></div><div class="stat-txt">Max format: full Value Added Course</div></div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <footer>
-      <div><strong>Hansal Gandhi</strong> &bull; AI Seminars &amp; Workshops Portfolio (Ages 15&ndash;25)</div>
-      <div>+91 96990 78983 &bull; hansalgandhi@gmail.com &bull; linkedin.com/in/hansalgandhi</div>
-    </footer>
+    <!-- Programs -->
+    <section class="block" id="programs">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div><div class="sec-idx">02 // PROGRAMS</div><h2 class="sec-title">Four tracks. <em>Ages 15–25.</em></h2></div>
+          <span class="sec-kicker">Tap any track to expand the module breakdown</span>
+        </div>
+        <div class="filters reveal" role="group" aria-label="Filter programs">
+          <button class="f-btn active" data-filter="all">All programs</button>
+          <button class="f-btn" data-filter="junior">Junior College · 15–18</button>
+          <button class="f-btn" data-filter="degree">Degree / Commerce / Mgmt · 17–22</button>
+          <button class="f-btn" data-filter="engineering">Engineering &amp; Tech · 18–25</button>
+        </div>
+
+        <div class="tracks">
+          <article class="track reveal" data-category="junior">
+            <button class="track-head" aria-expanded="false">
+              <span class="t-num">01</span>
+              <span><div class="t-title">AI in Everyday Life &amp; How Machines Learn</div><span class="t-tag">FOUNDATION SEMINAR</span><span class="t-mobile-meta">15–18 yrs · 60–90 mins</span></span>
+              <span class="t-meta"><strong>15–18 yrs</strong>FYJC / SYJC · Science, Commerce, Arts, HSC IT</span>
+              <span class="t-meta"><strong>60–90 mins</strong>Seminar + live demo</span>
+              <span class="t-plus" aria-hidden="true"></span>
+            </button>
+            <div class="track-body"><div>
+              <p class="t-desc">Demystifies machine learning, computer vision and LLMs without heavy math; covers AI career pathways, data privacy and academic integrity, aligned with Class 11–12 AI &amp; HSC IT foundations.</p>
+              <div class="modules">
+                <div class="mod"><strong>MODULE 1 · 30 MIN</strong>How neural networks &amp; tokens actually work — interactive visual simulation.</div>
+                <div class="mod"><strong>MODULE 2 · 30 MIN</strong>Study smarter, not lazier — ethical AI workflows for board &amp; competitive exam prep.</div>
+                <div class="mod"><strong>MODULE 3 · 30 MIN</strong>Live deepfake &amp; hallucination spotter quiz + future AI career roadmap.</div>
+              </div>
+            </div></div>
+          </article>
+
+          <article class="track reveal" data-category="degree">
+            <button class="track-head" aria-expanded="false">
+              <span class="t-num">02</span>
+              <span><div class="t-title">Prompt Engineering &amp; Responsible AI Productivity</div><span class="t-tag">APPLIED LAB</span><span class="t-mobile-meta">17–22 yrs · 2–3 hours</span></span>
+              <span class="t-meta"><strong>17–22 yrs</strong>B.Sc., B.Com., BAF, BMS, B.Ed.</span>
+              <span class="t-meta"><strong>2–3 hours</strong>Hands-on lab workshop</span>
+              <span class="t-plus" aria-hidden="true"></span>
+            </button>
+            <div class="track-body"><div>
+              <p class="t-desc">Structured prompting (zero-shot, few-shot, chain-of-thought, prompt chaining), output verification, hallucination detection and ethical workplace AI adoption.</p>
+              <div class="modules">
+                <div class="mod"><strong>LAB 1</strong>System roleplay, few-shot formatting &amp; structured JSON/table extraction.</div>
+                <div class="mod"><strong>LAB 2</strong>Automated research synthesis, financial/spreadsheet modelling &amp; fact auditing.</div>
+                <div class="mod"><strong>LAB 3</strong>Building a reusable departmental prompt playbook + citation ethics.</div>
+              </div>
+            </div></div>
+          </article>
+
+          <article class="track reveal" data-category="engineering">
+            <button class="track-head" aria-expanded="false">
+              <span class="t-num">03</span>
+              <span><div class="t-title">Building Real-World AI Apps with Python &amp; RAG</div><span class="t-tag">BOOTCAMP</span><span class="t-mobile-meta">18–25 yrs · 1–2 days</span></span>
+              <span class="t-meta"><strong>18–25 yrs</strong>B.Sc. CS/IT/AI, B.E./B.Tech., MCA</span>
+              <span class="t-meta"><strong>1–2 days</strong>Intensive bootcamp</span>
+              <span class="t-plus" aria-hidden="true"></span>
+            </button>
+            <div class="track-body"><div>
+              <p class="t-desc">Step-by-step Python LLM pipelines, Retrieval-Augmented Generation and vector search — teams build and deploy a working Q&amp;A prototype by the end.</p>
+              <div class="modules">
+                <div class="mod"><strong>PHASE 1</strong>API orchestration, structured outputs, Pydantic schemas &amp; streaming UI.</div>
+                <div class="mod"><strong>PHASE 2</strong>Chunking strategies, vector embeddings &amp; hybrid semantic search over PDFs.</div>
+                <div class="mod"><strong>PHASE 3</strong>Grounded citation evaluation, latency optimisation &amp; live cloud deployment.</div>
+              </div>
+            </div></div>
+          </article>
+
+          <article class="track reveal" data-category="engineering">
+            <button class="track-head" aria-expanded="false">
+              <span class="t-num">04</span>
+              <span><div class="t-title">Agentic AI, Tool Calling &amp; Guardrails</div><span class="t-tag">CAPSTONE</span><span class="t-mobile-meta">20–25 yrs · 2 days</span></span>
+              <span class="t-meta"><strong>20–25 yrs</strong>TE/BE Engineering, PG, tech chapters</span>
+              <span class="t-meta"><strong>2 days</strong>Capstone workshop</span>
+              <span class="t-plus" aria-hidden="true"></span>
+            </button>
+            <div class="track-body"><div>
+              <p class="t-desc">Reasoning loops, Model Context Protocol (MCP), multi-agent orchestration, tool calling, evaluation metrics and prompt-injection defence.</p>
+              <div class="modules">
+                <div class="mod"><strong>UNIT 1</strong>ReAct loops, deterministic tool calling &amp; custom MCP server construction.</div>
+                <div class="mod"><strong>UNIT 2</strong>Lead-orchestrator &amp; sub-agent delegation across distributed nodes.</div>
+                <div class="mod"><strong>UNIT 3</strong>Red-teaming, prompt-injection sandboxing &amp; production telemetry logs.</div>
+              </div>
+            </div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live terminal demo -->
+    <section class="block" id="demo">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div><div class="sec-idx">03 // WATCH IT RUN</div><h2 class="sec-title">What students <em>actually build</em>.</h2></div>
+          <span class="sec-kicker">Replay of a Track 03 lab build</span>
+        </div>
+        <div class="term-grid">
+          <div class="term-copy panel reveal">
+            <h3>Not slides about AI. A working system by end of day.</h3>
+            <p>Every engineering session ends with something that runs — grounded, cited, guarded. This is the kind of pipeline a student team ships in the Python &amp; RAG bootcamp.</p>
+            <ul>
+              <li>Ingest a real college PDF</li>
+              <li>Index it for hybrid semantic search</li>
+              <li>Answer with page-level citations</li>
+              <li>Block prompt-injection attempts</li>
+              <li>Deploy it live for classmates</li>
+            </ul>
+          </div>
+          <div class="terminal reveal" style="--d:.1s">
+            <div class="term-bar"><i></i><i></i><i></i><span>~/track-03/campus-faqbot — zsh</span></div>
+            <div class="term-body" id="termBody" aria-live="off"></div>
+            <div class="term-foot"><span>SIMULATED REPLAY</span><span id="termClock">00:00</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Showcase -->
+    <section class="block" id="systems">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div><div class="sec-idx">04 // LIVE DEMO SHOWCASE</div><h2 class="sec-title">Built &amp; deployed <em>systems</em>.</h2></div>
+          <span class="sec-kicker">Demoed live in sessions — hover for depth</span>
+        </div>
+        <div class="show-grid">
+          <article class="show tilt reveal">
+            <div>
+              <div class="show-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M12 7.5v4M12 11.5 6.5 16M12 11.5l5.5 4.5"/></svg></div>
+              <div class="sys-tag">SYSTEM 01 · DISTRIBUTED AGENTS</div>
+              <h3>Multi-Node Autonomous Agent Orchestrator</h3>
+              <p>Live task decomposition, autonomous tool execution and multi-agent coordination across local Linux machines and cloud nodes in real time.</p>
+            </div>
+            <div class="stack">Lead orchestrator + sub-agent harnesses · Linux &amp; cloud nodes</div>
+          </article>
+          <article class="show tilt reveal" style="--d:.08s">
+            <div>
+              <div class="show-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h3M8 17h6"/></svg></div>
+              <div class="sys-tag">SYSTEM 02 · FULL-STACK AUTOMATION</div>
+              <h3>Operational Web &amp; Workflow Suite</h3>
+              <p>Production web platforms — attendance trackers, project boards and automated BOQ/catalogue builders — showing how AI accelerates software delivery.</p>
+            </div>
+            <div class="stack">Full-stack web apps · structured data pipelines · automation</div>
+          </article>
+          <article class="show tilt reveal" style="--d:.16s">
+            <div>
+              <div class="show-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></div>
+              <div class="sys-tag">SYSTEM 03 · CYBER-PHYSICAL</div>
+              <h3>Edge-AI &amp; IoT Hardware Prototyping</h3>
+              <p>How software intelligence connects to physical sensors, cellular telemetry and real-world power and enclosure constraints.</p>
+            </div>
+            <div class="stack">ESP32-C3 · A7672S cellular · BMA400 sensor · 3D enclosures</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stakeholders -->
+    <section class="block" id="colleges">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div><div class="sec-idx">05 // FOR YOUR COLLEGE</div><h2 class="sec-title">NEP 2020, IQAC &amp; <em>department</em> ready.</h2></div>
+          <span class="sec-kicker">Select your role to see the deliverables</span>
+        </div>
+        <div class="tabs reveal" role="tablist">
+          <button class="tab active" data-key="iqac" role="tab">Principal &amp; IQAC</button>
+          <button class="tab" data-key="tp" role="tab">Training &amp; Placement</button>
+          <button class="tab" data-key="dept" role="tab">CS/IT/AI Depts &amp; Chapters</button>
+        </div>
+        <div class="panel reveal">
+          <div class="st-panel" id="stPanel">
+            <div>
+              <h3 id="stTitle"></h3>
+              <p class="sub" id="stSub"></p>
+              <ul class="st-list" id="stList"></ul>
+            </div>
+            <div class="badges">
+              <span class="badge">▸ DOCUMENTATION &amp; AQAR COMPLIANCE</span>
+              <span class="badge">▸ HANDS-ON PROTOTYPE DELIVERABLE</span>
+              <span class="badge">▸ EMPLOYABILITY &amp; CAPSTONE READINESS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div><div class="sec-idx">06 // HOW BOOKING WORKS</div><h2 class="sec-title">Three steps to <em>a live lab</em>.</h2></div>
+        </div>
+        <div class="steps reveal">
+          <div class="step"><div class="step-dot">01</div><h4>Call or WhatsApp</h4><p>Share your college, cohort size and preferred track. A quick conversation is enough to scope it.</p></div>
+          <div class="step"><div class="step-dot">02</div><h4>Get the syllabus pack</h4><p>Module plan with Course Outcomes mapped to Bloom's Taxonomy, lab requirements and dates.</p></div>
+          <div class="step"><div class="step-dot">03</div><h4>Session + documentation</h4><p>Hands-on delivery, starter repositories, co-branded e-certificates and AQAR-ready records.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking -->
+    <section class="block" id="book">
+      <div class="wrap">
+        <div class="booking reveal">
+          <div class="book-grid">
+            <div class="book-left">
+              <div class="sec-idx">07 // BOOK A SESSION</div>
+              <h3>Bring a live AI lab to your campus.</h3>
+              <p>On-campus across Mumbai, Navi Mumbai, Thane &amp; Palghar — or live online. Seminars need a projector and internet; workshops need student laptops or lab PCs with browser/Python access.</p>
+              <a class="big-phone" href="tel:+919699078983">+91 96990 78983</a>
+              <div class="book-note">CALL OR WHATSAPP · hansalgandhi@gmail.com</div>
+            </div>
+            <div>
+              <div class="fields">
+                <div class="field full">
+                  <label for="collegeName">COLLEGE / DEPARTMENT</label>
+                  <input type="text" id="collegeName" placeholder="e.g., St. Xavier's / DJ Sanghvi / TCSC" autocomplete="organization" />
+                </div>
+                <div class="field full">
+                  <label for="programTrack">PROGRAM TRACK</label>
+                  <select id="programTrack">
+                    <option>Track 01: Junior College Seminar (60–90 mins)</option>
+                    <option>Track 02: Degree College Lab (2–3 hours)</option>
+                    <option>Track 03: Python &amp; RAG Bootcamp (1–2 days)</option>
+                    <option>Track 04: Agentic AI Capstone (2 days)</option>
+                    <option>Value Added Course (15 or 30 hours)</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="students">EXPECTED STUDENTS</label>
+                  <input type="number" id="students" min="1" placeholder="e.g., 60" inputmode="numeric" />
+                </div>
+                <div class="field">
+                  <label for="deliveryFormat">FORMAT</label>
+                  <select id="deliveryFormat">
+                    <option>On-campus (Mumbai / Thane / Navi Mumbai / Palghar)</option>
+                    <option>Live interactive online</option>
+                  </select>
+                </div>
+                <div class="field full">
+                  <label for="month">PREFERRED MONTH</label>
+                  <input type="month" id="month" />
+                </div>
+              </div>
+              <div class="actions">
+                <button class="btn btn-wa magnetic" id="waBtn" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+                  Send on WhatsApp
+                </button>
+                <button class="btn btn-ghost magnetic" id="mailBtn" type="button">Email inquiry</button>
+                <button class="btn btn-ghost" id="printBtn" type="button">Save as PDF</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div><strong style="color:var(--ink)">Hansal Gandhi</strong> · Hands-on AI seminars &amp; workshops · Ages 15–25</div>
+      <div><a href="tel:+919699078983">+91 96990 78983</a> · <a href="mailto:hansalgandhi@gmail.com">hansalgandhi@gmail.com</a> · <a href="https://www.linkedin.com/in/hansalgandhi" target="_blank" rel="noopener">in/hansalgandhi</a></div>
+    </div>
+  </footer>
+
+  <!-- Floating dock -->
+  <div class="dock" id="dock">
+    <a class="d-wa" href="https://wa.me/919699078983?text=Hello%20Prof.%20Hansal%2C%20I%27d%20like%20to%20book%20an%20AI%20session%20for%20our%20students." target="_blank" rel="noopener" aria-label="WhatsApp">
+      <span>WhatsApp</span>
+      <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+    </a>
+    <a class="d-call" href="tel:+919699078983" aria-label="Call now">
+      <span>Call now</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+    </a>
   </div>
 
   <script>
-    const trackDetails = [
-      {
-        title: "Track 01: AI in Everyday Life & How Machines Learn (60–90 Mins)",
-        audience: "FYJC & SYJC Students (Science, Commerce, Arts, HSC IT) — Ages 15–18",
-        agenda: "1. How AI actually learns (patterns vs. rules) • 2. Live visual & language model demos • 3. Spotting deepfakes, bias & hallucinations • 4. Future careers & HSC IT / Class 11–12 project ideas",
-        takeaway: "Students gain clear conceptual intuition without intimidating calculus, plus practical guidelines for ethical, effective study use."
-      },
-      {
-        title: "Track 02: Prompt Engineering & Responsible AI Productivity (2–3 Hours)",
-        audience: "Undergraduate Degree Students (B.Sc., B.Com., BAF, BMS, B.Ed.) — Ages 17–22",
-        agenda: "1. Anatomy of structured prompts (Role, Context, Constraints, Examples) • 2. Chain-of-Thought & Prompt Chaining • 3. Fact-checking & citation verification workflows • 4. Resume, research & data analysis labs",
-        takeaway: "Every participant builds a reusable personal prompt toolkit tailored to their academic stream and internship workflows."
-      },
-      {
-        title: "Track 03: Building Real-World AI Apps with Python & RAG (1–2 Days)",
-        audience: "CS, IT, AI/DS & Engineering Undergraduates / MCA — Ages 18–25",
-        agenda: "1. LLM APIs, tokens & structured JSON outputs • 2. Document chunking, embeddings & vector retrieval • 3. Building a syllabus-grounded RAG assistant in Python • 4. Grounding checks & live deployment",
-        takeaway: "Student teams leave with a working, GitHub-ready RAG application that answers questions strictly from custom documents."
-      },
-      {
-        title: "Track 04: Agentic AI, Tool Calling & Guardrails (2 Days)",
-        audience: "TE/BE Engineering, Postgraduate Cohorts & Tech Chapters (CSI, ACM, GDG, IEEE) — Ages 20–25",
-        agenda: "1. ReAct reasoning loops & deterministic tool calling • 2. Model Context Protocol (MCP) & multi-agent handoffs • 3. Latency, cost & hallucination evaluation • 4. Prompt-injection defense & sandboxing",
-        takeaway: "Engineers architect an end-to-end multi-step agent capable of querying external tools safely with measurable guardrails."
-      }
-    ];
+  (function () {
+    'use strict';
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
-    const stakeholderContent = {
+    /* ---------- Boot sequence (once per session) ---------- */
+    const boot = $('#boot');
+    let seen = false;
+    try { seen = sessionStorage.getItem('hg_boot') === '1'; sessionStorage.setItem('hg_boot', '1'); } catch (e) {}
+    function startPage() { boot.classList.add('done'); scrambleName(); }
+    if (reduce || seen) {
+      boot.style.display = 'none';
+      requestAnimationFrame(startPage);
+    } else {
+      const lines = [
+        ['> loading curriculum.modules', '[4/4]'],
+        ['> mounting agents.orchestrator', 'OK'],
+        ['> calibrating rag.pipeline', 'OK'],
+        ['> region: MUMBAI_MMR', 'ONLINE']
+      ];
+      const box = $('#bootBox');
+      lines.forEach(([t, s], i) => {
+        const d = document.createElement('div');
+        d.className = 'boot-line';
+        d.style.animationDelay = (i * 0.18) + 's';
+        d.innerHTML = t + ' <span class="ok">' + s + '</span>';
+        box.appendChild(d);
+      });
+      const bar = document.createElement('div'); bar.className = 'boot-bar'; bar.innerHTML = '<i></i>'; box.appendChild(bar);
+      setTimeout(startPage, 1050);
+      boot.addEventListener('click', startPage, { once: true });
+    }
+
+    /* ---------- Text scramble for name ---------- */
+    function scramble(el, delay) {
+      const final = el.dataset.text, chars = '!<>-_\\/[]{}—=+*^?#01ABCDEF';
+      let frame = 0; const total = 26;
+      setTimeout(function tick() {
+        let out = '';
+        for (let i = 0; i < final.length; i++) {
+          const lock = (i / final.length) * total * 0.7 + 6;
+          out += frame >= lock ? final[i] : chars[(Math.random() * chars.length) | 0];
+        }
+        el.textContent = out;
+        if (frame++ < total) requestAnimationFrame(tick); else el.textContent = final;
+      }, delay);
+    }
+    function scrambleName() {
+      if (reduce) return;
+      scramble($('#nameA'), 150);
+      scramble($('#nameB'), 380);
+    }
+
+    /* ---------- Rotating skill word (typewriter) ---------- */
+    (function rotator() {
+      const el = $('#rotator');
+      const words = ['AI literacy', 'prompt engineering', 'Python & RAG apps', 'multi-agent systems', 'edge-AI hardware'];
+      if (reduce) return;
+      let w = 0, i = words[0].length, del = true;
+      function step() {
+        const word = words[w];
+        if (del) { i--; el.textContent = word.slice(0, i); if (i === 0) { del = false; w = (w + 1) % words.length; } setTimeout(step, 38); }
+        else { i++; el.textContent = words[w].slice(0, i); if (i === words[w].length) { del = true; setTimeout(step, 1900); } else setTimeout(step, 70); }
+      }
+      setTimeout(step, 2600);
+    })();
+
+    /* ---------- Neural network canvas ---------- */
+    (function neural() {
+      const cv = $('#neural'); const ctx = cv.getContext('2d');
+      let W, H, dpr, nodes = [], visible = true, mouse = { x: -9999, y: -9999 };
+      function size() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = cv.clientWidth; H = cv.clientHeight;
+        cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const n = Math.round(Math.min(90, Math.max(36, (W * H) / 16000)));
+        nodes = Array.from({ length: n }, () => ({
+          x: Math.random() * W, y: Math.random() * H,
+          vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35,
+          r: Math.random() * 1.6 + .8, hot: Math.random() < .12, ph: Math.random() * 6.28
+        }));
+      }
+      const pulses = [];
+      function draw(t) {
+        ctx.clearRect(0, 0, W, H);
+        const LINK = 130;
+        for (const n of nodes) {
+          if (!reduce) { n.x += n.vx; n.y += n.vy; }
+          if (n.x < 0 || n.x > W) n.vx *= -1;
+          if (n.y < 0 || n.y > H) n.vy *= -1;
+          const dx = mouse.x - n.x, dy = mouse.y - n.y, dm = Math.hypot(dx, dy);
+          if (dm < 160 && !reduce) { n.x += dx * .006; n.y += dy * .006; }
+        }
+        for (let i = 0; i < nodes.length; i++) {
+          const a = nodes[i];
+          for (let j = i + 1; j < nodes.length; j++) {
+            const b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+            if (d < LINK) {
+              const near = Math.hypot(mouse.x - (a.x + b.x) / 2, mouse.y - (a.y + b.y) / 2) < 170;
+              ctx.strokeStyle = near ? `rgba(255,90,54,${(1 - d / LINK) * .55})` : `rgba(236,234,228,${(1 - d / LINK) * .2})`;
+              ctx.lineWidth = near ? 1.1 : .7;
+              ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+              if (!reduce && Math.random() < .0009 && pulses.length < 14) pulses.push({ a, b, p: 0 });
+            }
+          }
+        }
+        for (let k = pulses.length - 1; k >= 0; k--) {
+          const s = pulses[k]; s.p += .018;
+          if (s.p >= 1) { pulses.splice(k, 1); continue; }
+          const x = s.a.x + (s.b.x - s.a.x) * s.p, y = s.a.y + (s.b.y - s.a.y) * s.p;
+          ctx.fillStyle = 'rgba(94,234,212,.95)'; ctx.shadowColor = '#5EEAD4'; ctx.shadowBlur = 10;
+          ctx.beginPath(); ctx.arc(x, y, 1.9, 0, 6.28); ctx.fill(); ctx.shadowBlur = 0;
+        }
+        for (const n of nodes) {
+          const glow = n.hot ? .6 + .4 * Math.sin(t / 600 + n.ph) : 0;
+          ctx.fillStyle = n.hot ? `rgba(255,90,54,${.6 + glow * .4})` : 'rgba(236,234,228,.55)';
+          ctx.beginPath(); ctx.arc(n.x, n.y, n.r + glow * 1.2, 0, 6.28); ctx.fill();
+        }
+      }
+      function loop(t) { if (visible) draw(t); if (!reduce) requestAnimationFrame(loop); }
+      size(); window.addEventListener('resize', size);
+      const hero = $('.hero');
+      hero.addEventListener('mousemove', e => { const r = cv.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; }, { passive: true });
+      hero.addEventListener('mouseleave', () => { mouse.x = mouse.y = -9999; });
+      new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(cv);
+      document.addEventListener('visibilitychange', () => { visible = !document.hidden; });
+      reduce ? draw(0) : requestAnimationFrame(loop);
+    })();
+
+    /* ---------- Telemetry waveform ---------- */
+    (function wave() {
+      const cv = $('#wave'); const ctx = cv.getContext('2d'); let W, H, on = true;
+      function size() { const d = Math.min(devicePixelRatio || 1, 2); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); }
+      size(); addEventListener('resize', size);
+      new IntersectionObserver(([e]) => { on = e.isIntersecting; }).observe(cv);
+      function draw(t) {
+        ctx.clearRect(0, 0, W, H);
+        [['rgba(94,234,212,.9)', 1, 0], ['rgba(255,90,54,.75)', .6, 1.7]].forEach(([c, amp, off]) => {
+          ctx.strokeStyle = c; ctx.lineWidth = 1.5; ctx.beginPath();
+          for (let x = 0; x <= W; x += 2) {
+            const y = H / 2 + Math.sin(x * .045 + t / 380 + off) * H * .28 * amp + Math.sin(x * .13 + t / 210) * H * .08;
+            x ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+          }
+          ctx.stroke();
+        });
+      }
+      function loop(t) { if (on) draw(t); requestAnimationFrame(loop); }
+      reduce ? draw(0) : requestAnimationFrame(loop);
+    })();
+
+    /* ---------- Reveal + counters ---------- */
+    function countUp(el) {
+      const to = +el.dataset.to; if (reduce) { el.textContent = to; return; }
+      const from = el.dataset.fast ? to - 26 : 0, dur = 1300, t0 = performance.now();
+      (function f(t) { const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 4); el.textContent = Math.round(from + (to - from) * e); if (p < 1) requestAnimationFrame(f); })(t0);
+    }
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        $$('.count', e.target).forEach(c => { if (!c.dataset.done) { c.dataset.done = 1; countUp(c); } });
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    $$('.reveal').forEach(el => io.observe(el));
+
+    /* ---------- Scroll progress + dock ---------- */
+    const prog = $('#progress'), dock = $('#dock');
+    let ticking = false;
+    addEventListener('scroll', () => {
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(() => {
+        const h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+        prog.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop / max : 0) + ')';
+        dock.classList.toggle('show-dock', h.scrollTop > 420);
+        ticking = false;
+      });
+    }, { passive: true });
+
+    /* ---------- Cursor + magnetic buttons + tilt ---------- */
+    if (fine && !reduce) {
+      const ring = $('#cursorRing'); let mx = -100, my = -100, raf = false;
+      addEventListener('mousemove', e => {
+        mx = e.clientX - 17; my = e.clientY - 17;
+        if (!raf) { raf = true; requestAnimationFrame(() => { ring.style.transform = `translate3d(${mx}px,${my}px,0)`; raf = false; }); }
+      }, { passive: true });
+      $$('a, button, .track-head, .tilt').forEach(el => {
+        el.addEventListener('mouseenter', () => ring.classList.add('hot'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('hot'));
+      });
+      $$('.magnetic').forEach(b => {
+        b.addEventListener('mousemove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .18}px,${(e.clientY - r.top - r.height / 2) * .28}px)`; });
+        b.addEventListener('mouseleave', () => { b.style.transform = ''; });
+      });
+      $$('.tilt').forEach(c => {
+        let r2 = false;
+        c.addEventListener('mousemove', e => {
+          if (r2) return; r2 = true;
+          requestAnimationFrame(() => {
+            const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+            c.style.setProperty('--mx', x * 100 + '%'); c.style.setProperty('--my', y * 100 + '%');
+            c.style.transform = `perspective(900px) rotateX(${((.5 - y) * 9).toFixed(2)}deg) rotateY(${((x - .5) * 9).toFixed(2)}deg) translateZ(6px)`;
+            r2 = false;
+          });
+        }, { passive: true });
+        c.addEventListener('mouseleave', () => { c.style.transform = ''; });
+      });
+    } else { $('#cursorRing').style.display = 'none'; }
+
+    /* ---------- Tracks: expand + filter ---------- */
+    $$('.track-head').forEach(h => h.addEventListener('click', () => {
+      const t = h.closest('.track'), open = t.classList.toggle('open');
+      h.setAttribute('aria-expanded', open);
+    }));
+    $$('.f-btn').forEach(b => b.addEventListener('click', () => {
+      $$('.f-btn').forEach(x => x.classList.remove('active')); b.classList.add('active');
+      const f = b.dataset.filter;
+      $$('.track').forEach(t => {
+        const show = f === 'all' || t.dataset.category === f;
+        t.classList.toggle('hide', !show);
+        if (!show) { t.classList.remove('open'); $('.track-head', t).setAttribute('aria-expanded', 'false'); }
+      });
+    }));
+
+    /* ---------- Terminal replay ---------- */
+    (function terminal() {
+      const body = $('#termBody'), clock = $('#termClock');
+      const script = [
+        ['<span class="p">❯</span> python orchestrate.py --task <span class="a">"FAQ bot from admissions_2026.pdf"</span>', 0],
+        ['<span class="c">[lead]</span>     decomposing task → 3 sub-agents', 1],
+        ['<span class="c">[ingest]</span>   parsing admissions_2026.pdf … <span class="g">142 chunks</span>', 1],
+        ['<span class="c">[embed]</span>    hybrid index built (bm25 + dense vectors)', 1],
+        ['<span class="c">[query]</span>    <span class="a">"Last date for FYJC fee payment?"</span>', 1],
+        ['<span class="c">[retrieve]</span> top-k=4 · best relevance <span class="g">0.91</span>', 1],
+        ['<span class="c">[guard]</span>    prompt-injection scan … <span class="g">clean</span>', 1],
+        ['<span class="c">[answer]</span>   grounded <span class="g">✓</span> cites p.12, p.14', 1],
+        ['<span class="c">[deploy]</span>   shareable URL issued to class <span class="g">✓</span>', 1],
+        ['<span class="d"># built by a student team in one bootcamp day</span>', 1]
+      ];
+      let started = false, secs = 0;
+      function run() {
+        body.innerHTML = ''; let i = 0; secs = 0;
+        const cur = document.createElement('span'); cur.className = 'cur';
+        function next() {
+          if (i >= script.length) { body.appendChild(cur); setTimeout(run, 4200); return; }
+          const [html, fast] = script[i++];
+          const line = document.createElement('div');
+          if (!fast && !reduce) {
+            const tmp = document.createElement('div'); tmp.innerHTML = html;
+            const text = tmp.textContent; let k = 0;
+            body.appendChild(line); line.appendChild(cur);
+            (function type() {
+              if (k <= text.length) { line.textContent = text.slice(0, k++); line.appendChild(cur); setTimeout(type, 22); }
+              else { line.innerHTML = html; setTimeout(next, 380); }
+            })();
+          } else {
+            line.innerHTML = html; line.style.opacity = 0; line.style.transition = 'opacity .3s';
+            body.appendChild(line); requestAnimationFrame(() => { line.style.opacity = 1; });
+            body.appendChild(cur);
+            setTimeout(next, reduce ? 0 : 420 + Math.random() * 380);
+          }
+        }
+        next();
+      }
+      setInterval(() => { if (started) { secs++; clock.textContent = String((secs / 60) | 0).padStart(2, '0') + ':' + String(secs % 60).padStart(2, '0'); } }, 1000);
+      new IntersectionObserver(([e], o) => { if (e.isIntersecting && !started) { started = true; run(); o.disconnect(); } }, { threshold: .35 }).observe(body);
+    })();
+
+    /* ---------- Stakeholder tabs ---------- */
+    const data = {
       iqac: {
-        heading: "Principal & IQAC Coordinator — NEP 2020 & NAAC AQAR Readiness",
-        focus: "Aligned with NEP 2020 Skill Enhancement Courses (SEC), Vocational Skill Courses (VSC), and Value Added Courses (VAC).",
-        bullets: [
-          "Complete module syllabus with defined Course Outcomes (COs) mapped to Bloom's Taxonomy.",
-          "Structured attendance logs, pre/post-session assessment metrics, and student feedback summaries for NAAC AQAR files.",
-          "Flexible scheduling as a 2-hour seminar, 15-hour credit workshop, or 30-hour Value Added Course."
-        ]
+        title: 'Principal & IQAC Coordinator — NEP 2020 & NAAC AQAR readiness',
+        sub: 'Aligned with NEP 2020 Skill Enhancement Courses (SEC), Vocational Skill Courses (VSC) and Value Added Courses (VAC).',
+        items: ["Complete module syllabus with Course Outcomes (COs) mapped to Bloom's Taxonomy.", 'Structured attendance logs, pre/post-session assessment metrics and student feedback summaries for NAAC AQAR files.', 'Flexible scheduling: 2-hour seminar, 15-hour credit workshop or 30-hour Value Added Course.']
       },
-      tnp: {
-        heading: "Training & Placement (T&P) Cell — Industry & Interview Readiness",
-        focus: "Bridging the gap between academic coursework and employer expectations for applied AI fluency.",
-        bullets: [
-          "Hands-on capstone builds that students can publish on GitHub and defend during technical interviews.",
-          "Practical workflow automation skills applicable across software engineering, finance, analytics, and management roles.",
-          "Guidance on presenting AI projects responsibly without over-claiming black-box API wrappers."
-        ]
+      tp: {
+        title: 'Training & Placement Cell — portfolio & interview readiness',
+        sub: 'Equips final and pre-final year cohorts with verifiable GitHub repositories and production AI engineering fluency.',
+        items: ['Students deploy working Python RAG pipelines and multi-agent workflows, not toy notebook scripts.', 'Practical system-design trade-offs: latency, token-cost budgeting, guardrails and hallucination evaluation.', 'Prepares students to explain applied AI architecture clearly in technical and managerial interviews.']
       },
       dept: {
-        heading: "CS/IT/AI Departments & Student Technical Chapters (CSI, ACM, GDG, IEEE)",
-        focus: "High-energy live coding walkthroughs, architecture deep-dives, and hackathon preparation.",
-        bullets: [
-          "Live demonstrations of multi-node agent orchestration, RAG pipelines, and ESP32-C3 edge-AI hardware.",
-          "Starter code repositories and sandbox templates so students spend time building rather than debugging setup issues.",
-          "Ideal for annual tech fests, departmental symposiums, and weekend developer bootcamps."
-        ]
+        title: 'CS/IT/AI Departments & Student Chapters (IEEE / ACM / CSI / ISTE)',
+        sub: 'High-energy technical bootcamps and hackathons for tech fests, coding clubs and lab immersions.',
+        items: ['Starter GitHub templates, API-key setup guide and structured lab checkpoints shared ahead of time.', 'Live hardware-software demos featuring ESP32-C3 edge telemetry and multi-node Linux agent clusters.', 'Co-branded participation and capstone completion certificates for all attendees.']
       }
     };
-
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const trackRows = document.querySelectorAll('.track-row');
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        trackRows.forEach(row => {
-          row.style.display = (filter === 'all' || row.dataset.category === filter) ? '' : 'none';
-        });
-      });
-    });
-
-    const drawer = document.getElementById('syllabus-drawer');
-    const drawerTitle = document.getElementById('drawer-title');
-    const drawerBody = document.getElementById('drawer-body');
-    trackRows.forEach(row => {
-      row.addEventListener('click', () => {
-        trackRows.forEach(r => r.classList.remove('selected'));
-        row.classList.add('selected');
-        const item = trackDetails[Number(row.dataset.track)];
-        drawerTitle.textContent = item.title;
-        drawerBody.innerHTML = `
-          <div class="syllabus-box"><strong>Target Cohort</strong>${item.audience}</div>
-          <div class="syllabus-box"><strong>Session Flow</strong>${item.agenda}</div>
-          <div class="syllabus-box"><strong>Student Outcome</strong>${item.takeaway}</div>
-        `;
-        drawer.classList.add('open');
-      });
-    });
-
-    document.getElementById('close-drawer').addEventListener('click', () => {
-      drawer.classList.remove('open');
-      trackRows.forEach(r => r.classList.remove('selected'));
-    });
-
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const panel = document.getElementById('stakeholder-panel');
-    function renderTab(key) {
-      const data = stakeholderContent[key];
-      panel.innerHTML = `
-        <h4>${data.heading}</h4>
-        <p>${data.focus}</p>
-        <ul>${data.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
-      `;
+    function setTab(key) {
+      const d = data[key], p = $('#stPanel');
+      $('#stTitle').textContent = d.title; $('#stSub').textContent = d.sub;
+      const ul = $('#stList'); ul.innerHTML = '';
+      d.items.forEach(t => { const li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
+      p.classList.remove('swap'); void p.offsetWidth; p.classList.add('swap');
     }
-    renderTab('iqac');
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderTab(btn.dataset.tab);
-      });
-    });
+    $$('.tab').forEach(b => b.addEventListener('click', () => {
+      $$('.tab').forEach(x => x.classList.remove('active')); b.classList.add('active'); setTab(b.dataset.key);
+    }));
+    setTab('iqac');
 
-    const collegeInput = document.getElementById('college-input');
-    const trackSelect = document.getElementById('track-select');
-    const modeSelect = document.getElementById('mode-select');
-    const waLink = document.getElementById('whatsapp-link');
-    const emailLink = document.getElementById('email-link');
-
-    function updateLinks() {
-      const college = collegeInput.value.trim() || "our college";
-      const track = trackSelect.value;
-      const mode = modeSelect.value;
-      const msg = `Hello Prof. Hansal Gandhi, I am reaching out from ${college} regarding conducting "${track}" (${mode}) for our students. Please share your availability.`;
-      waLink.href = `https://wa.me/919699078983?text=${encodeURIComponent(msg)}`;
-      emailLink.href = `mailto:hansalgandhi@gmail.com?subject=${encodeURIComponent("AI Workshop Inquiry - " + college)}&body=${encodeURIComponent(msg)}`;
+    /* ---------- Inquiry builders ---------- */
+    function form() {
+      const m = $('#month').value;
+      let month = '';
+      if (m) { const [y, mo] = m.split('-'); month = new Date(+y, +mo - 1, 1).toLocaleString('en-IN', { month: 'long', year: 'numeric' }); }
+      return {
+        college: $('#collegeName').value.trim(),
+        track: $('#programTrack').value,
+        format: $('#deliveryFormat').value,
+        students: $('#students').value.trim(),
+        month
+      };
     }
-    [collegeInput, trackSelect, modeSelect].forEach(el => el.addEventListener('input', updateLinks));
-    updateLinks();
+    $('#waBtn').addEventListener('click', () => {
+      const f = form();
+      let msg = `Hello Prof. Hansal, I am reaching out from *${f.college || 'our institution'}*. We would like to schedule *${f.track}* (${f.format}) for our students.`;
+      if (f.students) msg += ` Expected students: ${f.students}.`;
+      if (f.month) msg += ` Preferred month: ${f.month}.`;
+      window.open('https://wa.me/919699078983?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+    });
+    $('#mailBtn').addEventListener('click', () => {
+      const f = form();
+      const subject = `AI Workshop / Seminar Inquiry — ${f.college || 'Mumbai College'}`;
+      const body = `Hello Hansal,\n\nWe are interested in organising an AI session for our students.\n\nInstitution / Department: ${f.college || '-'}\nPreferred track: ${f.track}\nDelivery format: ${f.format}\nExpected students: ${f.students || '-'}\nPreferred month: ${f.month || '-'}\n\nPlease share available dates and commercials.\n\nBest regards,`;
+      location.href = `mailto:hansalgandhi@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+    $('#printBtn').addEventListener('click', () => {
+      $$('.track').forEach(t => t.classList.add('open'));
+      window.print();
+    });
+  })();
   </script>
 </body>
 </html>
