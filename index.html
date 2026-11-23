@@ -39,6 +39,10 @@
       --mono: 'JetBrains Mono', ui-monospace, monospace;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
+    /* Pin UI's soft spring (pinui.xyz, lib/motion.ts) as a CSS linear() easing. */
+    @supports (transition-timing-function: linear(0, 1)) {
+      :root { --ease: linear(0, 0.069, 0.211, 0.371, 0.518, 0.644, 0.745, 0.82, 0.877, 0.918, 0.946, 0.966, 0.979, 0.987, 0.993, 0.996, 1); }
+    }
 
     @property --angle {
       syntax: '<angle>';
