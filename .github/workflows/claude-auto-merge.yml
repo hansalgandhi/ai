@@ -1,0 +1,53 @@
+# Merges Claude's pull requests (branches named claude/*) by itself once every other check has passed.
+# Repos with the variable NIGHT_ONLY=true (live Vtech apps) merge only in the nightly run at 22:30 IST.
+# Squash commits carry the PR title only, so no AI co-author lines reach main (Vercel Hobby blocks those).
+name: Claude auto-merge
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  schedule:
+    - cron: '0 17 * * *'   # 22:30 IST
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+concurrency: claude-auto-merge-${{ github.event.pull_request.number || 'nightly' }}
+jobs:
+  automerge:
+    if: >-
+      github.event_name != 'pull_request' ||
+      (startsWith(github.head_ref, 'claude/') && !github.event.pull_request.draft &&
+       github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          EVENT: ${{ github.event_name }}
+          PR: ${{ github.event.pull_request.number }}
+          NIGHT_ONLY: ${{ vars.NIGHT_ONLY }}
+        run: |
+          set -u
+          hour=$(TZ=Asia/Kolkata date +%-H)
+          if [ "$EVENT" = pull_request ] && [ "$NIGHT_ONLY" = "true" ] && [ "$hour" -lt 22 ]; then
+            echo "Live app: PR #$PR will be merged in the 22:30 IST run."; exit 0
+          fi
+          if [ "$EVENT" = pull_request ]; then prs="$PR"; else
+            prs=$(gh pr list -R "$REPO" --state open --json number,headRefName,isDraft \
+              --jq '.[] | select(.headRefName | startswith("claude/")) | select(.isDraft | not) | .number')
+          fi
+          for n in $prs; do
+            verdict=wait
+            for i in $(seq 1 90); do
+              states=$(gh pr checks "$n" -R "$REPO" --json name,bucket --jq '.[] | select(.name != "automerge") | .bucket' 2>/dev/null || true)
+              if echo "$states" | grep -qE 'fail|cancel'; then verdict=fail; break; fi
+              if ! echo "$states" | grep -q pending; then verdict=pass; break; fi
+              sleep 20
+            done
+            [ "$verdict" = pass ] || { echo "PR #$n: checks $verdict, not merging"; continue; }
+            title=$(gh pr view "$n" -R "$REPO" --json title --jq .title)
+            gh pr merge "$n" -R "$REPO" --squash --delete-branch --subject "$title (#$n)" --body "" \
+              && echo "PR #$n merged" || echo "PR #$n not mergeable (conflict?)"
+          done
